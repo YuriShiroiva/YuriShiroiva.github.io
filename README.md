@@ -35,10 +35,12 @@ assets/             → imagens (capas e figuras dos projetos)
 
 ## O que ainda falta preencher
 
-| Onde | O quê |
-|---|---|
-| `index.html` e `projetos/*.html` | Links do LinkedIn e Instagram |
-| `assets/me.svg` | Sua foto (pode ser `.jpg`; atualize o `src` em `#sobre`) |
+- Link do LinkedIn (hero, rodapé e dock).
+- Currículo em PDF (botão no hero).
+
+## Créditos
+
+O hero foi inspirado no portfólio de [Moncy Yohannan](https://github.com/MoncyDev/Portfolio-Website): a implementação é própria e não usa código nem assets 3D do original.
 
 ## Publicar no GitHub Pages
 

@@ -46,53 +46,55 @@
 
   <main>
 
-    <!-- ===== Hero ===== -->
-    <section class="hero" id="inicio">
-      <div class="hero__card">
-        <div class="layer layer--preview">
-          <div class="phone"><img src="assets/projects/talhoes/tile_overlay.webp" alt=""></div>
-          <div class="phone"><img src="assets/projects/folhasa/leaf.webp" alt=""></div>
-          <div class="phone"><img src="assets/projects/falhas/resultado_final.webp" alt=""></div>
-        </div>
+    <!-- ===== Hero (inspirado no portfólio de Moncy Yohannan — ver crédito no rodapé) ===== -->
+    <section class="intro" id="inicio">
+      <div class="intro__bg" aria-hidden="true">
+        <span class="intro__glow intro__glow--a"></span>
+        <span class="intro__glow intro__glow--b"></span>
+        <span class="intro__glow intro__glow--c"></span>
+      </div>
 
-        <div class="layer layer--stack" aria-hidden="true">
-          <div class="layer__viewport">
-            <canvas class="dots"></canvas>
-            <ul class="tech-list">
-              <li style="--i:0">Python</li>
-              <li style="--i:1">PyTorch</li>
-              <li style="--i:2">FastAPI</li>
-              <li style="--i:3">OpenCV</li>
-              <li style="--i:4">scikit-learn</li>
-              <li style="--i:5">pandas</li>
-              <li style="--i:6">Rasterio</li>
-              <li style="--i:7">Docker</li>
-              <li style="--i:8">React</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="layer layer--screens" aria-hidden="true">
-          <div class="layer__viewport">
-            <div class="screens">
-              <img src="assets/projects/talhoes/cover.webp" alt="">
-              <img src="assets/projects/plataforma/cover.webp" alt="">
-              <img src="assets/projects/folhasa/cover.webp" alt="">
-              <img src="assets/projects/falhas/cover.webp" alt="">
-            </div>
+      <div class="intro__visual" aria-hidden="true">
+        <div class="scan">
+          <figure class="scan__float scan__float--1"><img src="assets/projects/folhasa/leaf.webp" alt=""></figure>
+          <figure class="scan__float scan__float--2"><img src="assets/projects/falhas/resultado_final.webp" alt=""></figure>
+          <div class="scan__main">
+            <img class="scan__base" src="assets/projects/talhoes/tile_rgb.webp" alt="">
+            <img class="scan__mask" src="assets/projects/talhoes/tile_instancias.webp" alt="">
+            <span class="scan__beam"></span>
+            <span class="scan__corner scan__corner--tl"></span>
+            <span class="scan__corner scan__corner--tr"></span>
+            <span class="scan__corner scan__corner--bl"></span>
+            <span class="scan__corner scan__corner--br"></span>
+            <span class="scan__chip scan__chip--top">Sentinel-2 · 10 m</span>
+            <span class="scan__chip scan__chip--bottom"><i></i>6 talhões detectados</span>
           </div>
         </div>
       </div>
 
-      <div class="hero__title">
-        <div class="hero__kicker"><span>Um</span><span>baita</span><span>dev de</span></div>
-        <h1 class="hero__big" data-fit data-fit-max-vh="30" aria-label="Yuri Shiroiva, um baita dev de IA aplicada">IA Aplicada</h1>
+      <div class="intro__left">
+        <p class="intro__hello">Olá! Eu sou</p>
+        <h1 class="intro__name" aria-label="Yuri Shiroiva">
+          <span class="intro__line" data-split-line>Yuri</span>
+          <span class="intro__line intro__line--alt" data-split-line>Shiroiva</span>
+        </h1>
+        <div class="intro__actions">
+          <a class="btn btn--accent magnetic" href="#trabalhos"><span class="roll"><span data-text="Ver projetos">Ver projetos</span></span></a>
+          <a class="btn btn--ghost" href="#contato">Contato</a>
+        </div>
       </div>
 
-      <div class="hero__scroll">
-        <span>↓ Role para ver</span>
-        <span>coisa boa ↓</span>
+      <div class="intro__right">
+        <p class="intro__label">Desenvolvedor</p>
+        <p class="intro__role"><span class="sr-only">Python e de IA aplicada</span><span class="intro__swap" aria-hidden="true"><span>Python</span><span>de IA</span><span>Python</span></span></p>
+        <p class="intro__summary">Visão computacional, deep learning com imagens de satélite e APIs em Python — do notebook à produção.</p>
       </div>
+
+      <div class="intro__social">
+        <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        <a href="mailto:yurishiroivabr@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <a class="intro__hint" href="#sobre">Role para conhecer <span aria-hidden="true">↓</span></a>
     </section>
 
     <!-- ===== Sobre ===== -->
@@ -104,9 +106,30 @@
           Nos meus projetos, treino redes neurais que enxergam o campo — por satélite e por foto — e levo os modelos do notebook até a produção.
         </p>
       </div>
-      <figure class="about__media" data-reveal="fade">
-        <img src="assets/me.svg" alt="Foto de Yuri Shiroiva" data-parallax>
-      </figure>
+      <aside class="about__card" data-reveal="fade" aria-label="Trajetória">
+        <p class="label">Trajetória</p>
+        <ol class="timeline">
+          <li>
+            <span class="timeline__period">2025 — hoje</span>
+            <div>
+              <h3>IoTag</h3>
+              <p class="timeline__role">Back-end Python · dados de máquinas agrícolas</p>
+              <p>Serviços em Python que decodificam os logs de telemetria das máquinas e transformam dados brutos em informação pronta para análise.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline__period">TCC 2026</span>
+            <div>
+              <h3>PUCPR</h3>
+              <p class="timeline__role">Tecnologia em Inteligência Artificial Aplicada</p>
+              <p>TCC sobre detecção de talhões agrícolas com imagens Sentinel-2 e deep learning.</p>
+            </div>
+          </li>
+        </ol>
+        <ul class="chips">
+          <li>Visão computacional</li><li>Deep learning</li><li>Sensoriamento remoto</li><li>APIs em Python</li>
+        </ul>
+      </aside>
     </section>
 
     <!-- ===== Trabalhos ===== -->
@@ -169,7 +192,7 @@
     <!-- ===== Serviços ===== -->
     <section class="services" id="servicos">
       <div class="services__inner">
-        <p class="label">Serviços</p>
+        <p class="label">O que eu faço</p>
         <p class="services__intro" data-reveal="lines">
           Do dado bruto ao produto: treino modelos de visão computacional, construo as APIs que os servem e as interfaces que colocam o resultado na mão de quem decide no campo.
         </p>
@@ -242,7 +265,7 @@
     <footer class="footer" id="contato">
       <div class="contact">
         <p class="label">Contato</p>
-        <h2 class="contact__title" data-reveal="lines">Tem uma ideia?<br>Bora tirar do papel.</h2>
+        <h2 class="contact__title" data-reveal="lines">Procurando alguém para IA aplicada?<br>Vamos conversar.</h2>
         <div class="contact__actions">
           <a class="pill magnetic" href="mailto:yurishiroivabr@gmail.com" data-cursor="Escrever">
             <span class="roll"><span data-text="yurishiroivabr@gmail.com">yurishiroivabr@gmail.com</span></span>
@@ -254,16 +277,16 @@
       <div class="bento">
         <a class="tile tile--work" href="#trabalhos"><span class="tile__arrow" aria-hidden="true">↗</span><span>Trabalhos</span></a>
         <a class="tile tile--lab" href="projetos/talhoes.html"><span class="tile__arrow" aria-hidden="true">↗</span><span>TCC</span></a>
-        <a class="tile tile--contact" href="mailto:yurishiroivabr@gmail.com"><span class="tile__arrow" aria-hidden="true">↗</span><span>Contato</span></a>
+        <a class="tile tile--contact" href="mailto:yurishiroivabr@gmail.com"><span class="tile__arrow" aria-hidden="true">↗</span><span>E-mail</span></a>
         <a class="tile tile--github" href="https://github.com/YuriShiroiva" target="_blank" rel="noopener"><span class="tile__arrow" aria-hidden="true">↗</span><span>GitHub</span></a>
-        <a class="tile tile--instagram" href="https://instagram.com/" target="_blank" rel="noopener"><span class="tile__arrow" aria-hidden="true">↗</span><span>Instagram</span></a>
-        <a class="tile tile--linkedin" href="https://linkedin.com/" target="_blank" rel="noopener"><span class="tile__arrow" aria-hidden="true">↗</span><span>LinkedIn</span></a>
+        <a class="tile tile--instagram" href="projetos/folhasa.html"><span class="tile__arrow" aria-hidden="true">↗</span><span>FolhaSã</span></a>
+        <a class="tile tile--linkedin" href="#sobre"><span class="tile__arrow" aria-hidden="true">↗</span><span>Trajetória</span></a>
         <div class="bento__name" aria-hidden="true"><span data-fit>shiroiva</span></div>
       </div>
 
       <div class="footbar">
         <span>© <span data-year>2026</span> Yuri Shiroiva</span>
-        <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+        <span class="hide-sm">Hero inspirado em <a href="https://github.com/MoncyDev/Portfolio-Website" target="_blank" rel="noopener">Moncy Yohannan</a></span>
         <a href="#inicio">Voltar ao topo ↑</a>
       </div>
     </footer>
@@ -277,16 +300,15 @@
           <li><a href="#inicio"><span>01</span>Início</a></li>
           <li><a href="#sobre"><span>02</span>Sobre</a></li>
           <li><a href="#trabalhos"><span>03</span>Trabalhos</a></li>
-          <li><a href="#servicos"><span>04</span>Serviços</a></li>
+          <li><a href="#servicos"><span>04</span>O que faço</a></li>
           <li><a href="#stack"><span>05</span>Stack</a></li>
           <li><a href="#contato"><span>06</span>Contato</a></li>
         </ul>
         <div class="dock__foot">
-          <span class="status"><i></i>Disponível para projetos</span>
+          <span class="status"><i></i>Aberto a oportunidades</span>
           <span class="dock__socials">
             <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener">GH</a>
-            <a href="https://linkedin.com/" target="_blank" rel="noopener">IN</a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener">IG</a>
+            <a href="mailto:yurishiroivabr@gmail.com">E-mail</a>
           </span>
         </div>
       </div>
