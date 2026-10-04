@@ -124,8 +124,9 @@ button:hover .roll > span { transform: translateY(-100%); }
 @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
 
 /* ---------- Topbar ---------- */
+/* fica só no topo da página (rola junto), para não passar por cima de imagens */
 .topbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
