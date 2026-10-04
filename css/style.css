@@ -686,7 +686,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   width: clamp(28px, 3.2vw, 46px);
   height: clamp(28px, 3.2vw, 46px);
   opacity: .82;
-  transition: transform .6s var(--ease), opacity .3s;
+  transition: transform .6s var(--ease), opacity .3s, filter .4s var(--ease);
 }
 .logo span {
   position: absolute;
@@ -700,9 +700,11 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   transition: color .3s;
 }
 .logo__fallback { font-size: 22px; font-weight: 800; letter-spacing: -.03em; }
-.logo:hover { background: #fff; }
-.logo:hover img { transform: scale(1.12) rotate(-4deg); opacity: 1; }
-.logo:hover span { color: var(--ink); }
+/* ao passar o mouse, as cores invertem: fundo preto, ícone e nome brancos */
+.logo:hover { background: var(--ink); }
+.logo:hover img { transform: scale(1.12) rotate(-4deg); opacity: 1; filter: invert(1); }
+.logo:hover span,
+.logo:hover .logo__fallback { color: #fff; }
 
 /* ---------- Contato / Rodapé ---------- */
 .footer { padding: 10vh 8px 0; }
