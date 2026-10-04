@@ -298,7 +298,7 @@
           scale: 0.94,
           filter: 'brightness(.5)',
           ease: 'none',
-          scrollTrigger: { trigger: next, start: 'top 75%', end: 'top 25%', scrub: true },
+          scrollTrigger: { trigger: next, start: 'top 38%', end: 'top 16%', scrub: true },
         });
       });
     });

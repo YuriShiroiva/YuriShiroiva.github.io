@@ -590,10 +590,9 @@ a.more__row:hover { background: #fff; }
 a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--accent); }
 
 /* ---------- Serviços ---------- */
-.services { padding: 0 8px; }
+.services { padding: 0; }
 .services__inner {
   padding: 16vh 4vw 10vh;
-  border-radius: 28px;
   background: var(--dark);
   color: #fff;
 }
@@ -615,7 +614,6 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   align-items: start;
   margin-top: 18px;
   padding: 28px;
-  border: 1px solid var(--dark-line);
   border-radius: 20px;
   background: var(--dark-2);
   transform-origin: center top;
@@ -1199,7 +1197,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   .projects-track { animation-duration: 40s; }
   .project__info { gap: 16px; }
 
-  .services__inner { padding: 10vh 18px 18px; border-radius: 22px; }
+  .services__inner { padding: 10vh 18px 18px; }
   .services__intro { margin-bottom: 8vh; }
   .service {
     position: relative;
