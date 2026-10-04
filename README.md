@@ -45,7 +45,7 @@ As capas têm 1600x1280. O card da home e a capa da página do projeto cortam pa
 
 ## Cache do navegador
 
-O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004o`). Sempre que mudar esses arquivos, troque o `?v=` nas 6 páginas (`index.html`, `404.html` e `projetos/*.html`) para os visitantes receberem a versão nova. Com imagem que muda mantendo o nome, vale o mesmo: as capas usam `?v=2`.
+O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004p`). Sempre que mudar esses arquivos, troque o `?v=` nas 6 páginas (`index.html`, `404.html` e `projetos/*.html`) para os visitantes receberem a versão nova. Com imagem que muda mantendo o nome, vale o mesmo: as capas usam `?v=2`.
 
 ## Publicar no GitHub Pages
 

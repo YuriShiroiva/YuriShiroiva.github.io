@@ -881,7 +881,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   height: 46px;
   overflow: hidden;
   border-radius: 10px;
-  background: var(--accent);
+  background: #fff;
 }
 .dock__avatar img { width: 100%; height: 100%; object-fit: cover; }
 .dock__info { min-width: 0; }
