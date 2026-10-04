@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FolhaSã: diagnóstico de doenças em folhas de tomate — Yuri Shiroiva</title>
-  <meta name="description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0: 99,9% de acurácia, F1-macro 0,999, API FastAPI e demo web.">
+  <title>FolhaSã: diagnóstico de doenças em folhas de tomate | Yuri Shiroiva</title>
+  <meta name="description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0. 99,9% de acurácia, F1-macro de 0,999, API em FastAPI e demo web.">
   <meta name="theme-color" content="#f2f2f0">
   <meta property="og:type" content="article">
   <meta property="og:title" content="FolhaSã: diagnóstico de doenças em folhas de tomate">
-  <meta property="og:description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0: 99,9% de acurácia, F1-macro 0,999, API FastAPI e demo web.">
+  <meta property="og:description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0. 99,9% de acurácia, F1-macro de 0,999, API em FastAPI e demo web.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,11 +37,11 @@
       <a class="back-link" href="../index.html#trabalhos"><span aria-hidden="true">←</span> Todos os trabalhos</a>
       <p class="label">Visão computacional · Práticas Extensionistas · PUCPR · 2026</p>
       <h1 class="case-title" data-reveal="lines">FolhaSã: diagnóstico de doenças em folhas de tomate</h1>
-      <p class="case-lead" data-reveal="lines">Um classificador que identifica 10 condições da folha do tomateiro a partir de uma única foto — com 99,9% de acurácia em imagens que o modelo nunca tinha visto.</p>
+      <p class="case-lead" data-reveal="lines">Um classificador que reconhece 10 condições da folha do tomateiro a partir de uma única foto. Acertou 99,9% das imagens de teste, que ele nunca tinha visto.</p>
 
       <dl class="case-meta" data-reveal="fade">
-        <div><dt>Papel</dt><dd>Autor — dados, modelagem, API e interface</dd></div>
-        <div><dt>Contexto</dt><dd>Práticas Extensionistas (prestação de serviço) — PUCPR</dd></div>
+        <div><dt>Papel</dt><dd>Autor (dados, modelo, API e interface)</dd></div>
+        <div><dt>Contexto</dt><dd>Práticas Extensionistas (prestação de serviço) na PUCPR</dd></div>
         <div><dt>Ano</dt><dd>2026</dd></div>
         <div><dt>Stack</dt><dd>Python · PyTorch · timm · FastAPI · ONNX · MLflow</dd></div>
       </dl>
@@ -54,23 +54,23 @@
     <section class="case-section">
       <p class="label">O problema</p>
       <div class="case-body">
-        <p class="case-big" data-reveal="lines">Doença identificada cedo é lavoura protegida. A proposta: um diagnóstico a partir de uma foto.</p>
-        <p>Feito como prestação de serviço para o contexto de uma empresa de agtech: um sistema completo de visão computacional — dos dados à API — que reconhece nove doenças do tomateiro e a folha saudável.</p>
+        <p class="case-big" data-reveal="lines">Quanto antes a doença aparece, menos a lavoura perde. A ideia era fazer o diagnóstico com uma foto.</p>
+        <p>Fiz como prestação de serviço, pensando no dia a dia de uma empresa de agtech. É um sistema completo de visão computacional, dos dados até a API, que reconhece nove doenças do tomateiro e a folha saudável.</p>
       </div>
     </section>
 
     <section class="stats" aria-label="Resultados principais">
       <div class="stat" data-reveal="fade">
         <span class="stat__value">99,9%</span>
-        <span class="stat__label">de acurácia no teste, em 2.180 imagens nunca vistas no treino</span>
+        <span class="stat__label">de acurácia no teste, em 2.180 imagens que não foram usadas no treino</span>
       </div>
       <div class="stat stat--dark" data-reveal="fade">
         <span class="stat__value">2</span>
-        <span class="stat__label">erros em 2.180 folhas — todos os outros diagnósticos corretos</span>
+        <span class="stat__label">erros em 2.180 folhas. Todo o resto foi classificado certo</span>
       </div>
       <div class="stat stat--accent" data-reveal="fade">
         <span class="stat__value">0,999</span>
-        <span class="stat__label">de F1-macro: desempenho alto em todas as classes, não só nas comuns</span>
+        <span class="stat__label">de F1-macro: o modelo vai bem em todas as classes, inclusive nas raras</span>
       </div>
       <div class="stat" data-reveal="fade">
         <span class="stat__value">27 min</span>
@@ -84,22 +84,22 @@
         <li class="step">
           <span class="step__num">01</span>
           <h3>Dados</h3>
-          <p>PlantVillage (tomate): 14.529 imagens divididas de forma estratificada em 10.169 / 2.180 / 2.180, com imagens corrompidas filtradas na divisão.</p>
+          <p>PlantVillage (tomate): 14.529 imagens divididas de forma estratificada em 10.169, 2.180 e 2.180 (treino, validação e teste). Imagens corrompidas ficaram de fora.</p>
         </li>
         <li class="step">
           <span class="step__num">02</span>
           <h3>Transfer learning em duas fases</h3>
-          <p>EfficientNet-B0 pré-treinada: primeiro treina só a cabeça com o backbone congelado, depois ajusta a rede inteira.</p>
+          <p>Usei uma EfficientNet-B0 pré-treinada. Primeiro treinei só a cabeça, com o resto congelado, e depois liberei a rede inteira.</p>
         </li>
         <li class="step">
           <span class="step__num">03</span>
           <h3>Classes desbalanceadas</h3>
-          <p>Ponderação de classes na função de perda, alinhada ao F1-macro usado para escolher o melhor modelo.</p>
+          <p>Dei peso maior às classes raras na função de perda e escolhi o melhor modelo pelo F1-macro.</p>
         </li>
         <li class="step">
           <span class="step__num">04</span>
           <h3>Treino moderno</h3>
-          <p>Precisão mista (AMP), warmup com decaimento por cosseno, early stopping e checkpoints com retomada.</p>
+          <p>Precisão mista (AMP), warmup com decaimento por cosseno, early stopping e checkpoints para retomar o treino.</p>
         </li>
         <li class="step">
           <span class="step__num">05</span>
@@ -113,14 +113,14 @@
       <div class="case-figure__frame">
         <img src="../assets/projects/folhasa/demo.webp" alt="Página inicial do FolhaSã com o título Toda folha conta uma história" loading="lazy">
       </div>
-      <figcaption><b>Fig. 1</b> A página de demonstração entregue junto com o modelo.</figcaption>
+      <figcaption><b>Fig. 1</b> A página de demonstração que entreguei junto com o modelo.</figcaption>
     </figure>
 
     <section class="case-section">
       <p class="label">O salto</p>
       <div class="case-body">
-        <p class="case-big" data-reveal="lines">Ao descongelar o backbone, a acurácia de validação saltou de 0,63 para 0,97.</p>
-        <p>É o efeito do transfer learning em duas fases: a cabeça aprende rápido com o backbone congelado e, quando a rede inteira passa a treinar, o modelo se adapta às texturas específicas das folhas.</p>
+        <p class="case-big" data-reveal="lines">Quando liberei a rede inteira, a acurácia de validação pulou de 0,63 para 0,97.</p>
+        <p>Na primeira fase, só a cabeça aprende. Quando a rede toda passa a treinar, ela se ajusta às texturas das folhas e o resultado sobe de uma vez.</p>
       </div>
     </section>
 
@@ -128,14 +128,14 @@
       <div class="case-figure__frame">
         <img src="../assets/projects/folhasa/curva_de_treino.webp" alt="Curvas de perda e acurácia ao longo das épocas, com salto visível na segunda fase" loading="lazy">
       </div>
-      <figcaption><b>Fig. 2</b> Curva de treino: as duas fases ficam visíveis.</figcaption>
+      <figcaption><b>Fig. 2</b> Curva de treino, com as duas fases bem visíveis.</figcaption>
     </figure>
 
     <section class="case-section">
       <p class="label">Todas as classes</p>
       <div class="case-body">
-        <p class="case-big" data-reveal="lines">Todas as 10 classes ficaram acima de 0,997 de F1 — inclusive a mais rara.</p>
-        <p>O vírus do mosaico tinha só 45 imagens no conjunto de teste. Com a ponderação de classes, o modelo acertou todas (F1 = 1,0) em vez de aprender a ignorá-la.</p>
+        <p class="case-big" data-reveal="lines">As 10 classes passaram de 0,997 de F1, inclusive a mais rara.</p>
+        <p>O vírus do mosaico tinha só 45 imagens no teste. Com o peso extra na função de perda, o modelo acertou todas (F1 = 1,0) em vez de ignorar essa classe.</p>
       </div>
     </section>
 
@@ -143,27 +143,27 @@
       <div class="case-figure__frame">
         <img src="../assets/projects/folhasa/matriz_de_confusao.webp" alt="Matriz de confusão com praticamente todos os valores na diagonal" loading="lazy">
       </div>
-      <figcaption><b>Fig. 3</b> Matriz de confusão no teste: os 2 únicos erros fora da diagonal.</figcaption>
+      <figcaption><b>Fig. 3</b> Matriz de confusão no teste, com os 2 únicos erros fora da diagonal.</figcaption>
     </figure>
 
     <section class="case-section">
       <p class="label">Engenharia</p>
       <div class="decisions">
         <article class="decision" data-reveal="fade">
-          <h3>Configuração centralizada</h3>
-          <p>Um YAML tipado (OmegaConf + dataclasses) controla o experimento. Trocar EfficientNet por ResNet ou ConvNeXt é uma linha.</p>
+          <h3>Configuração num lugar só</h3>
+          <p>Um YAML tipado (OmegaConf com dataclasses) controla o experimento. Para trocar a EfficientNet por uma ResNet ou ConvNeXt, basta mudar uma linha.</p>
         </article>
         <article class="decision" data-reveal="fade">
-          <h3>Experimentos rastreados</h3>
-          <p>TensorBoard e MLflow atrás da mesma interface, com métricas, curvas e relatórios salvos por execução.</p>
+          <h3>Experimentos registrados</h3>
+          <p>TensorBoard e MLflow ficam atrás da mesma interface, e cada execução salva métricas, curvas e relatórios.</p>
         </article>
         <article class="decision" data-reveal="fade">
           <h3>Pronto para produção</h3>
-          <p>Exportação TorchScript/ONNX com checagem numérica de paridade e carregamento seguro de checkpoints.</p>
+          <p>Exportei para TorchScript e ONNX conferindo se as saídas batem com o modelo original, e os checkpoints são carregados de forma segura.</p>
         </article>
         <article class="decision" data-reveal="fade">
-          <h3>Sem GPU local, nuvem</h3>
-          <p>Minha GPU de 4 GB não dava conta; migrei o treino para uma Tesla P100 gratuita e automatizei a correção da versão do PyTorch.</p>
+          <h3>Sem GPU boa em casa</h3>
+          <p>Minha GPU de 4 GB não dava conta, então levei o treino para uma Tesla P100 gratuita na nuvem e automatizei o ajuste da versão do PyTorch.</p>
         </article>
       </div>
     </section>
@@ -209,8 +209,8 @@
       <div class="dock__info">
         <strong>Yuri Shiroiva</strong>
         <div class="marquee"><div class="marquee__track">
-          <span>Cientista de dados, Engenheiro de IA, LLMs &amp; agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus &amp; ISOBUS,</span>
-          <span aria-hidden="true">Cientista de dados, Engenheiro de IA, LLMs &amp; agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus &amp; ISOBUS,</span>
+          <span>Cientista de dados, Engenheiro de IA, LLMs e agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus e ISOBUS,</span>
+          <span aria-hidden="true">Cientista de dados, Engenheiro de IA, LLMs e agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus e ISOBUS,</span>
         </div></div>
       </div>
       <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Abrir menu">

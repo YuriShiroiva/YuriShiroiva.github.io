@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Detecção de falhas em peças metálicas — Yuri Shiroiva</title>
+  <title>Detecção de falhas em peças metálicas | Yuri Shiroiva</title>
   <meta name="description" content="Pipeline de visão computacional com OpenCV (CLAHE, Canny, morfologia e segmentação por forma) que detecta uma fissura em chapa metálica.">
   <meta name="theme-color" content="#f2f2f0">
   <meta property="og:type" content="article">
@@ -37,11 +37,11 @@
       <a class="back-link" href="../index.html#trabalhos"><span aria-hidden="true">←</span> Todos os trabalhos</a>
       <p class="label">Processamento de imagens · IA na Indústria 4.0 · PUCPR · 2026</p>
       <h1 class="case-title" data-reveal="lines">Detecção de falhas em peças metálicas</h1>
-      <p class="case-lead" data-reveal="lines">Um pipeline clássico de visão computacional, com técnicas encadeadas, que encontra e destaca uma fissura numa chapa metálica — sem rede neural.</p>
+      <p class="case-lead" data-reveal="lines">Um pipeline de visão computacional clássica, sem rede neural, que encontra e destaca uma rachadura numa chapa de metal.</p>
 
       <dl class="case-meta" data-reveal="fade">
         <div><dt>Papel</dt><dd>Autor</dd></div>
-        <div><dt>Contexto</dt><dd>Disciplina IA na Indústria 4.0 — PUCPR</dd></div>
+        <div><dt>Contexto</dt><dd>Disciplina IA na Indústria 4.0, na PUCPR</dd></div>
         <div><dt>Ano</dt><dd>2026</dd></div>
         <div><dt>Stack</dt><dd>Python · OpenCV · NumPy · Matplotlib</dd></div>
       </dl>
@@ -54,9 +54,9 @@
     <section class="case-section">
       <p class="label">A ideia</p>
       <div class="case-body">
-        <p class="case-big" data-reveal="lines">Nem todo problema precisa de deep learning. Aqui, técnicas clássicas bem encadeadas resolvem.</p>
-        <p>Cada técnica é aplicada sobre o resultado da anterior, e todas as imagens intermediárias são salvas para o relatório técnico.</p>
-        <p>A peça é uma chapa sintética gerada pelo próprio script, com semente fixa: tem rebites e manchas de corrosão que não podem ser confundidos com a falha.</p>
+        <p class="case-big" data-reveal="lines">Nem sempre precisa de deep learning. Neste caso, técnicas clássicas aplicadas uma depois da outra deram conta.</p>
+        <p>Cada técnica trabalha em cima do resultado da anterior, e salvei todas as imagens intermediárias para o relatório técnico.</p>
+        <p>A peça é uma chapa sintética que o próprio script gera, sempre igual (semente fixa). Ela tem rebites e manchas de corrosão que o pipeline não pode confundir com a falha.</p>
       </div>
     </section>
 
@@ -66,7 +66,7 @@
         <li class="step">
           <span class="step__num">01</span>
           <h3>Escala de cinza</h3>
-          <p>A cor não ajuda a achar a fissura; trabalhar com um canal simplifica as etapas seguintes.</p>
+          <p>A cor não ajuda a achar a fissura, e com um canal só as próximas etapas ficam mais simples.</p>
         </li>
         <li class="step">
           <span class="step__num">02</span>
@@ -81,7 +81,7 @@
         <li class="step">
           <span class="step__num">04</span>
           <h3>Bordas com Canny</h3>
-          <p>Limiares 50/150 destacam as transições fortes — a fissura e os rebites.</p>
+          <p>Limiares 50/150 destacam as transições fortes, que são a fissura e os rebites.</p>
         </li>
         <li class="step">
           <span class="step__num">05</span>
@@ -156,8 +156,8 @@
       <div class="dock__info">
         <strong>Yuri Shiroiva</strong>
         <div class="marquee"><div class="marquee__track">
-          <span>Cientista de dados, Engenheiro de IA, LLMs &amp; agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus &amp; ISOBUS,</span>
-          <span aria-hidden="true">Cientista de dados, Engenheiro de IA, LLMs &amp; agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus &amp; ISOBUS,</span>
+          <span>Cientista de dados, Engenheiro de IA, LLMs e agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus e ISOBUS,</span>
+          <span aria-hidden="true">Cientista de dados, Engenheiro de IA, LLMs e agentes, Machine Learning, Deep Learning, Séries temporais, CAN bus e ISOBUS,</span>
         </div></div>
       </div>
       <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Abrir menu">
