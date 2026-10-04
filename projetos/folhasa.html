@@ -9,13 +9,22 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="FolhaSã: diagnóstico de doenças em folhas de tomate">
   <meta property="og:description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0. 99,9% de acurácia, F1-macro de 0,999, API em FastAPI e demo web.">
+  <link rel="canonical" href="https://yurishiroiva.github.io/projetos/folhasa.html">
+  <meta property="og:url" content="https://yurishiroiva.github.io/projetos/folhasa.html">
+  <meta property="og:site_name" content="Yuri Shiroiva">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://yurishiroiva.github.io/assets/og/folhasa.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261004n">
+  <link rel="stylesheet" href="../css/style.css?v=20261004o">
 </head>
 <body class="case">
 
@@ -49,11 +58,11 @@
     </section>
 
     <figure class="case-cover" data-reveal="fade">
-      <img src="../assets/projects/folhasa/cover.webp" alt="Página de demonstração do FolhaSã aberta no navegador" data-parallax>
+      <img src="../assets/projects/folhasa/cover.webp?v=2" alt="Página de demonstração do FolhaSã aberta no navegador" data-parallax>
     </figure>
 
     <section class="case-section">
-      <p class="label">O problema</p>
+      <h2 class="label">O problema</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">Quanto antes a doença aparece, menos a lavoura perde. A ideia era fazer o diagnóstico com uma foto.</p>
         <p>Fiz como prestação de serviço, pensando no dia a dia de uma empresa de agtech. É um sistema completo de visão computacional, dos dados até a API, que reconhece nove doenças do tomateiro e a folha saudável.</p>
@@ -80,7 +89,7 @@
     </section>
 
     <section class="case-section">
-      <p class="label">Como funciona</p>
+      <h2 class="label">Como funciona</h2>
       <ol class="steps">
         <li class="step">
           <span class="step__num">01</span>
@@ -112,13 +121,13 @@
 
     <figure class="case-figure" data-reveal="fade">
       <div class="case-figure__frame">
-        <img src="../assets/projects/folhasa/demo.webp" alt="Página inicial do FolhaSã com o título Toda folha conta uma história" loading="lazy">
+        <img src="../assets/projects/folhasa/demo.webp" alt="Página inicial do FolhaSã com o título Toda folha conta uma história" width="1440" height="900" loading="lazy">
       </div>
       <figcaption><b>Fig. 1</b> A página de demonstração que entreguei junto com o modelo.</figcaption>
     </figure>
 
     <section class="case-section">
-      <p class="label">O salto</p>
+      <h2 class="label">O salto</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">Quando liberei a rede inteira, a acurácia de validação pulou de 0,63 para 0,97.</p>
         <p>Na primeira fase, só a cabeça aprende. Quando a rede toda passa a treinar, ela se ajusta às texturas das folhas e o resultado sobe de uma vez.</p>
@@ -127,13 +136,13 @@
 
     <figure class="case-figure case-figure--narrow" data-reveal="fade">
       <div class="case-figure__frame">
-        <img src="../assets/projects/folhasa/curva_de_treino.webp" alt="Curvas de perda e acurácia ao longo das épocas, com salto visível na segunda fase" loading="lazy">
+        <img src="../assets/projects/folhasa/curva_de_treino.webp" alt="Curvas de perda e acurácia ao longo das épocas, com salto visível na segunda fase" width="1400" height="491" loading="lazy">
       </div>
       <figcaption><b>Fig. 2</b> Curva de treino, com as duas fases bem visíveis.</figcaption>
     </figure>
 
     <section class="case-section">
-      <p class="label">Todas as classes</p>
+      <h2 class="label">Todas as classes</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">As 10 classes passaram de 0,997 de F1, inclusive a mais rara.</p>
         <p>O vírus do mosaico tinha só 45 imagens no teste. Com o peso extra na função de perda, o modelo acertou todas (F1 = 1,0) em vez de ignorar essa classe.</p>
@@ -142,13 +151,13 @@
 
     <figure class="case-figure case-figure--narrow" data-reveal="fade">
       <div class="case-figure__frame">
-        <img src="../assets/projects/folhasa/matriz_de_confusao.webp" alt="Matriz de confusão com praticamente todos os valores na diagonal" loading="lazy">
+        <img src="../assets/projects/folhasa/matriz_de_confusao.webp" alt="Matriz de confusão com praticamente todos os valores na diagonal" width="1177" height="882" loading="lazy">
       </div>
       <figcaption><b>Fig. 3</b> Matriz de confusão no teste, com os 2 únicos erros fora da diagonal.</figcaption>
     </figure>
 
     <section class="case-section">
-      <p class="label">Engenharia</p>
+      <h2 class="label">Engenharia</h2>
       <div class="decisions">
         <article class="decision" data-reveal="fade">
           <h3>Configuração num lugar só</h3>
@@ -177,22 +186,22 @@
 
   <footer class="footbar">
     <span>© <span data-year>2026</span> Yuri Shiroiva</span>
-    <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+    <span class="hide-sm">Curitiba, PR · <span data-clock>--:--:--</span></span>
     <a href="#topo">Voltar ao topo ↑</a>
   </footer>
 
   <!-- ===== Dock flutuante ===== -->
   <nav class="dock" aria-label="Navegação principal">
-    <div class="dock__panel" id="dock-menu" inert>
+    <div class="dock__panel" id="dock-menu" data-lenis-prevent inert>
       <div class="dock__panel-inner">
         <ul class="dock__links">
-          <li><a href="../index.html#inicio"><span>01</span>Início</a></li>
-          <li><a href="../index.html#sobre"><span>02</span>Sobre</a></li>
-          <li><a href="../index.html#experiencia"><span>03</span>Experiência</a></li>
-          <li><a href="../index.html#projetos"><span>04</span>Projetos</a></li>
-          <li><a href="../index.html#servicos"><span>05</span>O que faço</a></li>
-          <li><a href="../index.html#stack"><span>06</span>Stack</a></li>
-          <li><a href="../index.html#contato"><span>07</span>Contato</a></li>
+          <li><a href="../index.html#inicio"><span>01</span> Início</a></li>
+          <li><a href="../index.html#sobre"><span>02</span> Sobre</a></li>
+          <li><a href="../index.html#experiencia"><span>03</span> Experiência</a></li>
+          <li><a href="../index.html#projetos"><span>04</span> Projetos</a></li>
+          <li><a href="../index.html#servicos"><span>05</span> O que faço</a></li>
+          <li><a href="../index.html#stack"><span>06</span> Stack</a></li>
+          <li><a href="../index.html#contato"><span>07</span> Contato</a></li>
         </ul>
         <div class="dock__foot">
           <span class="status"><i></i>Aberto a oportunidades</span>
@@ -223,6 +232,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
-  <script src="../js/main.js?v=20261004n"></script>
+  <script src="../js/main.js?v=20261004o"></script>
 </body>
 </html>

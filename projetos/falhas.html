@@ -9,13 +9,22 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Detecção de falhas em peças metálicas">
   <meta property="og:description" content="Pipeline de visão computacional com OpenCV (CLAHE, Canny, morfologia e segmentação por forma) que detecta uma fissura em chapa metálica.">
+  <link rel="canonical" href="https://yurishiroiva.github.io/projetos/falhas.html">
+  <meta property="og:url" content="https://yurishiroiva.github.io/projetos/falhas.html">
+  <meta property="og:site_name" content="Yuri Shiroiva">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://yurishiroiva.github.io/assets/og/falhas.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261004n">
+  <link rel="stylesheet" href="../css/style.css?v=20261004o">
 </head>
 <body class="case">
 
@@ -49,11 +58,11 @@
     </section>
 
     <figure class="case-cover" data-reveal="fade">
-      <img src="../assets/projects/falhas/cover.webp" alt="Peça original, bordas detectadas pelo Canny e a fissura destacada em vermelho" data-parallax>
+      <img src="../assets/projects/falhas/cover.webp?v=2" alt="Peça original, bordas detectadas pelo Canny e a fissura destacada em vermelho" data-parallax>
     </figure>
 
     <section class="case-section">
-      <p class="label">A ideia</p>
+      <h2 class="label">A ideia</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">Nem sempre precisa de deep learning. Neste caso, técnicas clássicas aplicadas uma depois da outra deram conta.</p>
         <p>Cada técnica trabalha em cima do resultado da anterior, e salvei todas as imagens intermediárias para o relatório técnico.</p>
@@ -62,7 +71,7 @@
     </section>
 
     <section class="case-section">
-      <p class="label">O pipeline</p>
+      <h2 class="label">O pipeline</h2>
       <ol class="steps">
         <li class="step">
           <span class="step__num">01</span>
@@ -104,13 +113,13 @@
 
     <figure class="case-figure" data-reveal="fade">
       <div class="case-figure__frame">
-        <img src="../assets/projects/falhas/painel_comparativo.webp" alt="Painel com as oito etapas do pipeline, da imagem original ao resultado" loading="lazy">
+        <img src="../assets/projects/falhas/painel_comparativo.webp" alt="Painel com as oito etapas do pipeline, da imagem original ao resultado" width="1600" height="800" loading="lazy">
       </div>
       <figcaption><b>Fig. 1</b> As etapas lado a lado, da imagem original à falha detectada.</figcaption>
     </figure>
 
     <section class="case-section">
-      <p class="label">Limitações e próximos passos</p>
+      <h2 class="label">Limitações e próximos passos</h2>
       <div class="case-body">
         <p>Os limiares foram ajustados para esta cena. Em fotos reais, com iluminação e texturas variadas, o próximo passo seria calibrá-los num conjunto de imagens ou trocar a segmentação por um modelo treinado.</p>
       </div>
@@ -124,22 +133,22 @@
 
   <footer class="footbar">
     <span>© <span data-year>2026</span> Yuri Shiroiva</span>
-    <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+    <span class="hide-sm">Curitiba, PR · <span data-clock>--:--:--</span></span>
     <a href="#topo">Voltar ao topo ↑</a>
   </footer>
 
   <!-- ===== Dock flutuante ===== -->
   <nav class="dock" aria-label="Navegação principal">
-    <div class="dock__panel" id="dock-menu" inert>
+    <div class="dock__panel" id="dock-menu" data-lenis-prevent inert>
       <div class="dock__panel-inner">
         <ul class="dock__links">
-          <li><a href="../index.html#inicio"><span>01</span>Início</a></li>
-          <li><a href="../index.html#sobre"><span>02</span>Sobre</a></li>
-          <li><a href="../index.html#experiencia"><span>03</span>Experiência</a></li>
-          <li><a href="../index.html#projetos"><span>04</span>Projetos</a></li>
-          <li><a href="../index.html#servicos"><span>05</span>O que faço</a></li>
-          <li><a href="../index.html#stack"><span>06</span>Stack</a></li>
-          <li><a href="../index.html#contato"><span>07</span>Contato</a></li>
+          <li><a href="../index.html#inicio"><span>01</span> Início</a></li>
+          <li><a href="../index.html#sobre"><span>02</span> Sobre</a></li>
+          <li><a href="../index.html#experiencia"><span>03</span> Experiência</a></li>
+          <li><a href="../index.html#projetos"><span>04</span> Projetos</a></li>
+          <li><a href="../index.html#servicos"><span>05</span> O que faço</a></li>
+          <li><a href="../index.html#stack"><span>06</span> Stack</a></li>
+          <li><a href="../index.html#contato"><span>07</span> Contato</a></li>
         </ul>
         <div class="dock__foot">
           <span class="status"><i></i>Aberto a oportunidades</span>
@@ -170,6 +179,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
-  <script src="../js/main.js?v=20261004n"></script>
+  <script src="../js/main.js?v=20261004o"></script>
 </body>
 </html>

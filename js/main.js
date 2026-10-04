@@ -1,6 +1,6 @@
 /* =========================================================
-   Portfólio — interações e animações
-   GSAP + ScrollTrigger + Lenis (via CDN no index.html)
+   Portfólio: interações e animações
+   GSAP + ScrollTrigger + Lenis (via CDN, no fim de cada página)
    ========================================================= */
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
@@ -10,8 +10,24 @@
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
 
+  // voltando pelo "Voltar" do navegador: sem loader e na mesma altura de antes
+  const returning = performance.getEntriesByType?.('navigation')[0]?.type === 'back_forward';
+  const scrollKey = `scroll:${location.pathname}`;
+  addEventListener('pagehide', () => {
+    try { sessionStorage.setItem(scrollKey, String(Math.round(scrollY))); } catch {}
+  });
+  const savedScroll = () => {
+    try { return Number(sessionStorage.getItem(scrollKey)) || 0; } catch { return 0; }
+  };
+
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
+
+  // espera a fonte, mas no máximo 1,5 s (rede lenta não pode travar a página)
+  const fontsReady = () => Promise.race([
+    document.fonts ? document.fonts.ready : Promise.resolve(),
+    new Promise((res) => setTimeout(res, 1500)),
+  ]);
 
   /* ---------- Split de texto ---------- */
   function splitChars(el, { roll = false } = {}) {
@@ -83,19 +99,12 @@
     const natural = el.offsetWidth - padX;
     el.style.width = '';
     if (!avail || !natural) return;
-    let size = (200 * avail / natural) * 0.995;
-    const maxVh = parseFloat(el.dataset.fitMaxVh);
-    if (maxVh) size = Math.min(size, innerHeight * maxVh / 100);
-    el.style.fontSize = `${size}px`;
+    el.style.fontSize = `${(200 * avail / natural) * 0.995}px`;
   }
   const fitAll = () => $$('[data-fit]').forEach(fit);
 
   /* ---------- Split inicial (antes de medir) ---------- */
   const nameChars = $$('[data-split-line]').flatMap((el) => splitChars(el));
-  const megaChars = $$('[data-split-chars]').flatMap((el) => {
-    el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
-    return [...el.children].flatMap((child) => splitChars(child));
-  });
   const rollChars = $$('[data-roll]').flatMap((el) => splitChars(el, { roll: true }));
   fitAll();
 
@@ -117,59 +126,56 @@
 
   /* ---------- Dock / menu ---------- */
   const dock = $('.dock');
-  const toggle = $('.dock__toggle');
-  const panel = $('.dock__panel');
+  const dockToggle = $('.dock__toggle');
+  const dockPanel = $('.dock__panel');
   function setMenu(open) {
+    // o foco sai do menu antes de ele ficar inerte (senão vai parar no <body>)
+    if (!open && dockPanel.contains(document.activeElement)) dockToggle.focus();
     dock.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-    panel.inert = !open;
+    dockToggle.setAttribute('aria-expanded', String(open));
+    dockToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    dockPanel.inert = !open;
   }
-  toggle.addEventListener('click', () => setMenu(!dock.classList.contains('is-open')));
+  dockToggle.addEventListener('click', (e) => {
+    const open = !dock.classList.contains('is-open');
+    setMenu(open);
+    // aberto pelo teclado (Enter/Espaço): o foco vai para o primeiro link
+    if (open && e.detail === 0) $('a', dockPanel)?.focus();
+  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   document.addEventListener('click', (e) => { if (!dock.contains(e.target)) setMenu(false); });
 
   /* ---------- Experiência: caixas que abrem ao clicar ---------- */
   $$('.job__head').forEach((btn) => {
     const job = btn.closest('.job');
-    const panel = $(`#${btn.getAttribute('aria-controls')}`);
+    const jobPanel = document.getElementById(btn.getAttribute('aria-controls'));
     btn.addEventListener('click', () => {
       const open = !job.classList.contains('is-open');
       job.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', String(open));
-      panel.inert = !open;
+      jobPanel.inert = !open;
     });
     // a altura da página muda: recalcula as animações de scroll abaixo
-    panel.addEventListener('transitionend', (e) => {
+    jobPanel.addEventListener('transitionend', (e) => {
       if (e.propertyName === 'grid-template-rows' && hasGsap) ScrollTrigger.refresh();
     });
   });
 
   /* ---------- Links âncora ---------- */
+  const byHash = (hash) => (hash.length > 1 ? document.getElementById(decodeURIComponent(hash.slice(1))) : null);
   $$('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
       if (id.length < 2) { e.preventDefault(); return; }
-      const target = $(id);
+      const target = byHash(id);
       if (!target) return;
       e.preventDefault();
       setMenu(false);
       if (lenis) lenis.scrollTo(target, { duration: 1.6 });
       else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
-    });
-  });
-
-  /* ---------- Copiar e-mail ---------- */
-  $$('[data-copy]').forEach((btn) => {
-    const original = btn.textContent;
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(btn.dataset.copy);
-        btn.textContent = 'Copiado!';
-      } catch {
-        btn.textContent = btn.dataset.copy;
-      }
-      setTimeout(() => { btn.textContent = original; }, 1800);
+      // leva o foco junto (teclado e leitor de tela continuam dali)
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
     });
   });
 
@@ -203,7 +209,7 @@
     document.body.classList.remove('is-loading');
     lenis?.start();
     addEventListener('resize', fitAll);
-    if (document.fonts) document.fonts.ready.then(fitAll);
+    fontsReady().then(fitAll);
     return;
   }
 
@@ -212,7 +218,7 @@
   /* ---------- Hero: avatar acompanha o mouse ---------- */
   const avatar = $('.avatar');
   if (avatar && finePointer && !reduceMotion) {
-    const intro = $('.intro');
+    const hero = $('.intro');
     const rotX = gsap.quickTo(avatar, 'rotationX', { duration: 0.9, ease: 'power3' });
     const rotY = gsap.quickTo(avatar, 'rotationY', { duration: 0.9, ease: 'power3' });
     const glows = $$('.intro__glow').map((g, i) => ({
@@ -220,15 +226,15 @@
       y: gsap.quickTo(g, 'y', { duration: 1.4, ease: 'power3' }),
       k: 30 + i * 25,
     }));
-    intro.addEventListener('pointermove', (e) => {
-      const r = intro.getBoundingClientRect();
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
       const nx = (e.clientX - r.left) / r.width - 0.5;
       const ny = (e.clientY - r.top) / r.height - 0.5;
       rotY(nx * 10);
       rotX(-ny * 6);
       glows.forEach((g) => { g.x(nx * g.k); g.y(ny * g.k); });
     });
-    intro.addEventListener('pointerleave', () => { rotX(0); rotY(0); });
+    hero.addEventListener('pointerleave', () => { rotX(0); rotY(0); });
   }
 
   /* ---------- Cursor ---------- */
@@ -280,7 +286,7 @@
   function initScroll() {
     const mm = gsap.matchMedia();
 
-    // Hero: textos sobem mais rápido que o card de satélite ao rolar
+    // Hero: textos sobem e somem mais rápido que o avatar ao rolar
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       if (!$('.intro')) return;
       const st = () => ({ trigger: '.intro', start: 'top top', end: 'bottom top', scrub: true });
@@ -348,28 +354,7 @@
       });
     });
 
-    // TRABALHOS '26
-    reveal(megaChars, {
-      yPercent: 110,
-      duration: 1.2,
-      ease: 'expo.out',
-      stagger: 0.035,
-      scrollTrigger: { trigger: '.mega', start: 'top 85%' },
-    });
-
-    // Cards de projeto
-    gsap.utils.toArray('.project').forEach((p, i) => {
-      gsap.from(p, {
-        y: 90,
-        opacity: 0,
-        duration: 1.3,
-        ease: 'expo.out',
-        delay: (i % 2) * 0.1,
-        scrollTrigger: { trigger: p, start: 'top 92%' },
-      });
-    });
-
-    // STACK MODERNA
+    // Título "Stack moderna"
     reveal(rollChars, {
       yPercent: 50,
       duration: 1.3,
@@ -416,23 +401,27 @@
   }
 
   /* ---------- Loader + entrada do hero ---------- */
-  function intro() {
+  function playIntro() {
     const loader = $('.loader');
     const count = $('.loader__count');
     const done = () => {
       document.body.classList.remove('is-loading');
       lenis?.start();
-      // chegou com #ancora (ex.: vindo de uma página de projeto)
-      const target = location.hash.length > 1 && $(location.hash);
+      // chegou com #ancora (ex.: vindo de uma página de projeto) ou voltando pelo navegador
+      const target = byHash(location.hash);
+      const y = returning && !target ? savedScroll() : 0;
       if (target) {
         if (lenis) lenis.scrollTo(target, { immediate: true, force: true });
         else target.scrollIntoView();
+      } else if (y) {
+        if (lenis) lenis.scrollTo(y, { immediate: true, force: true });
+        else window.scrollTo(0, y);
       }
     };
 
-    if (!loader || reduceMotion) {
+    if (!loader || reduceMotion || returning) {
       loader?.remove();
-      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+      fontsReady().then(() => {
         fitAll();
         initScroll();
         ScrollTrigger.refresh();
@@ -461,9 +450,8 @@
       else addEventListener('load', res, { once: true });
     });
     const timeout = new Promise((res) => setTimeout(res, 4000));
-    const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
 
-    Promise.all([Promise.race([Promise.all([loaded, fonts]), timeout]), counting]).then(() => {
+    Promise.all([Promise.race([Promise.all([loaded, fontsReady()]), timeout]), counting]).then(() => {
       fitAll();
       initScroll();
       ScrollTrigger.refresh();
@@ -483,5 +471,5 @@
     });
   }
 
-  intro();
+  playIntro();
 })();

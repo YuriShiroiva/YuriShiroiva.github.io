@@ -9,13 +9,22 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Redes neurais: câmbio e CO₂">
   <meta property="og:description" content="LSTM em PyTorch para prever a cotação do dólar (R² de 0,92 no teste) e rede competitiva para agrupar veículos por cilindrada, eficiência e emissão de CO₂.">
+  <link rel="canonical" href="https://yurishiroiva.github.io/projetos/redes-neurais.html">
+  <meta property="og:url" content="https://yurishiroiva.github.io/projetos/redes-neurais.html">
+  <meta property="og:site_name" content="Yuri Shiroiva">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://yurishiroiva.github.io/assets/og/redes-neurais.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261004n">
+  <link rel="stylesheet" href="../css/style.css?v=20261004o">
 </head>
 <body class="case">
 
@@ -49,7 +58,7 @@
     </section>
 
     <figure class="case-cover" data-reveal="fade">
-      <img src="../assets/projects/redes/cover.webp?v=2" alt="Gráfico das previsões da LSTM para o dólar e gráfico de dispersão dos veículos agrupados por cilindrada e CO₂" data-parallax>
+      <img src="../assets/projects/redes-neurais/cover.webp" alt="Gráfico das previsões da LSTM para o dólar e gráfico de dispersão dos veículos agrupados por cilindrada e CO₂" data-parallax>
     </figure>
 
     <section class="stats" aria-label="Resultados principais">
@@ -72,7 +81,7 @@
     </section>
 
     <section class="case-section">
-      <p class="label">Prevendo o dólar</p>
+      <h2 class="label">Prevendo o dólar</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">A LSTM acompanhou bem as subidas e descidas do dólar no teste.</p>
         <p>Ela olha os 10 últimos valores da série para prever o próximo. Usei uma camada LSTM com 64 neurônios, uma camada densa de 16 e treinei por 150 épocas com Adam. A normalização (MinMaxScaler) foi ajustada só com os dados de treino, para não vazar informação do teste.</p>
@@ -90,15 +99,15 @@
       </div>
     </section>
 
-    <figure class="case-figure" data-reveal="fade">
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
       <div class="case-figure__frame">
-        <img src="../assets/projects/redes/rnt_teste.webp" alt="Linha das previsões da LSTM sobreposta aos valores reais do dólar no conjunto de teste" loading="lazy">
+        <img src="../assets/projects/redes-neurais/rnt_teste.webp" alt="Linha das previsões da LSTM sobreposta aos valores reais do dólar no conjunto de teste" width="1334" height="731" loading="lazy">
       </div>
       <figcaption><b>Fig. 1</b> Previsões da LSTM (laranja) sobre os valores reais do dólar (azul) no conjunto de teste.</figcaption>
     </figure>
 
     <section class="case-section">
-      <p class="label">Agrupando carros</p>
+      <h2 class="label">Agrupando carros</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">A rede competitiva separou os carros em grupos parecidos, sem ninguém dizer quais eram os grupos.</p>
         <p>Cada um dos 5 neurônios vira o representante de um grupo de veículos. Depois ajustei uma curva polinomial em cada relação para ver a tendência e fazer previsões, como a emissão estimada de um carro com motor de 8,2 litros (cerca de 498 g/km).</p>
@@ -120,15 +129,15 @@
       </div>
     </section>
 
-    <figure class="case-figure" data-reveal="fade">
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
       <div class="case-figure__frame">
-        <img src="../assets/projects/redes/rnc_cilindrada_x_co2.webp" alt="Gráfico de dispersão de veículos por cilindrada e emissão de CO₂, coloridos por grupo, com curva de tendência" loading="lazy">
+        <img src="../assets/projects/redes-neurais/rnc_cilindrada_x_co2.webp" alt="Gráfico de dispersão de veículos por cilindrada e emissão de CO₂, coloridos por grupo, com curva de tendência" width="1184" height="806" loading="lazy">
       </div>
       <figcaption><b>Fig. 2</b> Veículos coloridos pelo grupo que a rede competitiva encontrou, com a curva de tendência entre cilindrada e CO₂.</figcaption>
     </figure>
 
     <section class="case-section">
-      <p class="label">O que os números mostram</p>
+      <h2 class="label">O que os números mostram</h2>
       <div class="case-body">
         <p>A cilindrada sozinha explica só parte da variação (R² perto de 0,64), enquanto eficiência e emissão andam quase juntas (R² de 0,98). Para melhorar, eu usaria mais variáveis, como tipo de combustível e peso do carro. Na LSTM, o R² caiu de 0,98 no treino para 0,92 no teste: ela generaliza bem, mas ainda erra nos picos mais bruscos.</p>
       </div>
@@ -142,22 +151,22 @@
 
   <footer class="footbar">
     <span>© <span data-year>2026</span> Yuri Shiroiva</span>
-    <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+    <span class="hide-sm">Curitiba, PR · <span data-clock>--:--:--</span></span>
     <a href="#topo">Voltar ao topo ↑</a>
   </footer>
 
   <!-- ===== Dock flutuante ===== -->
   <nav class="dock" aria-label="Navegação principal">
-    <div class="dock__panel" id="dock-menu" inert>
+    <div class="dock__panel" id="dock-menu" data-lenis-prevent inert>
       <div class="dock__panel-inner">
         <ul class="dock__links">
-          <li><a href="../index.html#inicio"><span>01</span>Início</a></li>
-          <li><a href="../index.html#sobre"><span>02</span>Sobre</a></li>
-          <li><a href="../index.html#experiencia"><span>03</span>Experiência</a></li>
-          <li><a href="../index.html#projetos"><span>04</span>Projetos</a></li>
-          <li><a href="../index.html#servicos"><span>05</span>O que faço</a></li>
-          <li><a href="../index.html#stack"><span>06</span>Stack</a></li>
-          <li><a href="../index.html#contato"><span>07</span>Contato</a></li>
+          <li><a href="../index.html#inicio"><span>01</span> Início</a></li>
+          <li><a href="../index.html#sobre"><span>02</span> Sobre</a></li>
+          <li><a href="../index.html#experiencia"><span>03</span> Experiência</a></li>
+          <li><a href="../index.html#projetos"><span>04</span> Projetos</a></li>
+          <li><a href="../index.html#servicos"><span>05</span> O que faço</a></li>
+          <li><a href="../index.html#stack"><span>06</span> Stack</a></li>
+          <li><a href="../index.html#contato"><span>07</span> Contato</a></li>
         </ul>
         <div class="dock__foot">
           <span class="status"><i></i>Aberto a oportunidades</span>
@@ -188,6 +197,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
-  <script src="../js/main.js?v=20261004n"></script>
+  <script src="../js/main.js?v=20261004o"></script>
 </body>
 </html>
