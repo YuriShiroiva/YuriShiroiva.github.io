@@ -454,8 +454,8 @@ button:hover .roll > span { transform: translateY(-100%); }
   justify-content: space-between;
   gap: .25em;
   padding: 0 var(--pad);
-  margin-bottom: 3vh;
-  font-size: 14vw;
+  margin-bottom: 4vh;
+  font-size: clamp(52px, 7.5vw, 124px);
   font-weight: 700;
   line-height: .86;
   letter-spacing: -.045em;
