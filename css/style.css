@@ -315,7 +315,7 @@ button:hover .roll > span { transform: translateY(-100%); }
   line-height: .95;
   letter-spacing: -.045em;
 }
-.about__copy .section-title { margin-bottom: 20px; }
+.about__copy .section-title { margin-bottom: 44px; }
 .work .section-title { padding: 0 var(--pad); }
 
 /* ---------- Sobre ---------- */
@@ -327,10 +327,10 @@ button:hover .roll > span { transform: translateY(-100%); }
   padding: 24vh var(--pad) 18vh;
 }
 .about__text {
-  margin-top: 14px;
-  font-size: clamp(26px, 3.2vw, 52px);
+  margin-top: 0;
+  font-size: clamp(24px, 2.6vw, 42px);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.12;
   letter-spacing: -.03em;
 }
 .about__card {
