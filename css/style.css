@@ -279,7 +279,7 @@ button:hover .roll > span { transform: translateY(-100%); }
   transition: background-color .4s var(--ease), color .4s var(--ease), border-color .4s;
 }
 .btn--accent { background: var(--accent); color: var(--accent-ink); }
-.btn--accent:hover { background: #fff; }
+.btn--accent:hover { background: #fff; color: var(--ink); }
 .btn--ghost { border-color: rgba(255, 255, 255, .25); color: #fff; }
 .btn--ghost:hover { background: #fff; border-color: #fff; color: var(--ink); }
 .intro__social { position: absolute; left: 4.5vw; bottom: 30px; display: flex; gap: 10px; z-index: 1; }
@@ -730,7 +730,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   font-weight: 600;
   transition: background-color .4s var(--ease), color .4s var(--ease), border-color .4s;
 }
-.pill:hover { background: var(--accent); color: var(--accent-ink); }
+.pill:hover { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 .pill--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
 .pill--ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 
