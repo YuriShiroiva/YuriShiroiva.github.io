@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FolhaSã: diagnóstico de doenças em folhas de tomate — Yuri Shiroiva</title>
+  <meta name="description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0: 99,9% de acurácia, F1-macro 0,999, API FastAPI e demo web.">
+  <meta name="theme-color" content="#f2f2f0">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FolhaSã: diagnóstico de doenças em folhas de tomate">
+  <meta property="og:description" content="Classificador de 10 condições da folha do tomateiro com EfficientNet-B0: 99,9% de acurácia, F1-macro 0,999, API FastAPI e demo web.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="case">
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <header class="topbar">
+    <div class="topbar__item">
+      <p>Baseado no Brasil</p>
+      <p class="topbar__muted">Python · IA · Dados</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Construindo na</p>
+      <p class="topbar__muted">IoTag</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Formação</p>
+      <p class="topbar__muted">IA Aplicada · PUCPR</p>
+    </div>
+  </header>
+  <a class="topbar__cta magnetic" href="../index.html#contato"><span class="roll"><span data-text="Fale comigo">Fale comigo</span></span></a>
+
+  <main>
+    <section class="case-hero" id="topo">
+      <a class="back-link" href="../index.html#trabalhos"><span aria-hidden="true">←</span> Todos os trabalhos</a>
+      <p class="label">Visão computacional · Práticas Extensionistas · PUCPR · 2026</p>
+      <h1 class="case-title" data-reveal="lines">FolhaSã: diagnóstico de doenças em folhas de tomate</h1>
+      <p class="case-lead" data-reveal="lines">Um classificador que identifica 10 condições da folha do tomateiro a partir de uma única foto — com 99,9% de acurácia em imagens que o modelo nunca tinha visto.</p>
+      <div class="case-actions">
+        <a class="pill magnetic" href="https://github.com/YuriShiroiva/folhasa" target="_blank" rel="noopener" data-cursor="GitHub">
+          <span class="roll"><span data-text="Ver código no GitHub ↗">Ver código no GitHub ↗</span></span>
+        </a>
+      </div>
+
+      <dl class="case-meta" data-reveal="fade">
+        <div><dt>Papel</dt><dd>Autor — dados, modelagem, API e interface</dd></div>
+        <div><dt>Contexto</dt><dd>Práticas Extensionistas (prestação de serviço) — PUCPR</dd></div>
+        <div><dt>Ano</dt><dd>2026</dd></div>
+        <div><dt>Stack</dt><dd>Python · PyTorch · timm · FastAPI · ONNX · MLflow</dd></div>
+      </dl>
+    </section>
+
+    <figure class="case-cover" data-reveal="fade">
+      <img src="../assets/projects/folhasa/cover.webp" alt="Página de demonstração do FolhaSã aberta no navegador" data-parallax>
+    </figure>
+
+    <section class="case-section">
+      <p class="label">O problema</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Doença identificada cedo é lavoura protegida. A proposta: um diagnóstico a partir de uma foto.</p>
+        <p>Feito como prestação de serviço para o contexto de uma empresa de agtech: um sistema completo de visão computacional — dos dados à API — que reconhece nove doenças do tomateiro e a folha saudável.</p>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Resultados principais">
+      <div class="stat" data-reveal="fade">
+        <span class="stat__value">99,9%</span>
+        <span class="stat__label">de acurácia no teste, em 2.180 imagens nunca vistas no treino</span>
+      </div>
+      <div class="stat stat--dark" data-reveal="fade">
+        <span class="stat__value">2</span>
+        <span class="stat__label">erros em 2.180 folhas — todos os outros diagnósticos corretos</span>
+      </div>
+      <div class="stat stat--accent" data-reveal="fade">
+        <span class="stat__value">0,999</span>
+        <span class="stat__label">de F1-macro: desempenho alto em todas as classes, não só nas comuns</span>
+      </div>
+      <div class="stat" data-reveal="fade">
+        <span class="stat__value">27 min</span>
+        <span class="stat__label">de treino numa GPU Tesla P100 na nuvem (30 épocas)</span>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <p class="label">Como funciona</p>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">01</span>
+          <h3>Dados</h3>
+          <p>PlantVillage (tomate): 14.529 imagens divididas de forma estratificada em 10.169 / 2.180 / 2.180, com imagens corrompidas filtradas na divisão.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <h3>Transfer learning em duas fases</h3>
+          <p>EfficientNet-B0 pré-treinada: primeiro treina só a cabeça com o backbone congelado, depois ajusta a rede inteira.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <h3>Classes desbalanceadas</h3>
+          <p>Ponderação de classes na função de perda, alinhada ao F1-macro usado para escolher o melhor modelo.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">04</span>
+          <h3>Treino moderno</h3>
+          <p>Precisão mista (AMP), warmup com decaimento por cosseno, early stopping e checkpoints com retomada.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">05</span>
+          <h3>Entrega</h3>
+          <p>Modelo exportado para TorchScript e ONNX, API REST em FastAPI e uma página de demonstração em português.</p>
+        </li>
+      </ol>
+    </section>
+
+    <figure class="case-figure" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/folhasa/demo.webp" alt="Página inicial do FolhaSã com o título Toda folha conta uma história" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 1</b> A página de demonstração entregue junto com o modelo.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <p class="label">O salto</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Ao descongelar o backbone, a acurácia de validação saltou de 0,63 para 0,97.</p>
+        <p>É o efeito do transfer learning em duas fases: a cabeça aprende rápido com o backbone congelado e, quando a rede inteira passa a treinar, o modelo se adapta às texturas específicas das folhas.</p>
+      </div>
+    </section>
+
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/folhasa/curva_de_treino.webp" alt="Curvas de perda e acurácia ao longo das épocas, com salto visível na segunda fase" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 2</b> Curva de treino: as duas fases ficam visíveis.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <p class="label">Todas as classes</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Todas as 10 classes ficaram acima de 0,997 de F1 — inclusive a mais rara.</p>
+        <p>O vírus do mosaico tinha só 45 imagens no conjunto de teste. Com a ponderação de classes, o modelo acertou todas (F1 = 1,0) em vez de aprender a ignorá-la.</p>
+      </div>
+    </section>
+
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/folhasa/matriz_de_confusao.webp" alt="Matriz de confusão com praticamente todos os valores na diagonal" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 3</b> Matriz de confusão no teste: os 2 únicos erros fora da diagonal.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <p class="label">Engenharia</p>
+      <div class="decisions">
+        <article class="decision" data-reveal="fade">
+          <h3>Configuração centralizada</h3>
+          <p>Um YAML tipado (OmegaConf + dataclasses) controla o experimento. Trocar EfficientNet por ResNet ou ConvNeXt é uma linha.</p>
+        </article>
+        <article class="decision" data-reveal="fade">
+          <h3>Experimentos rastreados</h3>
+          <p>TensorBoard e MLflow atrás da mesma interface, com métricas, curvas e relatórios salvos por execução.</p>
+        </article>
+        <article class="decision" data-reveal="fade">
+          <h3>Pronto para produção</h3>
+          <p>Exportação TorchScript/ONNX com checagem numérica de paridade e carregamento seguro de checkpoints.</p>
+        </article>
+        <article class="decision" data-reveal="fade">
+          <h3>Sem GPU local, nuvem</h3>
+          <p>Minha GPU de 4 GB não dava conta; migrei o treino para uma Tesla P100 gratuita e automatizei a correção da versão do PyTorch.</p>
+        </article>
+      </div>
+    </section>
+
+    <a class="next-project" href="falhas.html" data-cursor="Próximo">
+      <span class="label">Próximo projeto</span>
+      <span class="next-project__title">Falhas industriais <span class="next-project__arrow" aria-hidden="true">→</span></span>
+    </a>
+  </main>
+
+  <footer class="footbar">
+    <span>© <span data-year>2026</span> Yuri Shiroiva</span>
+    <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </footer>
+
+  <!-- ===== Dock flutuante ===== -->
+  <nav class="dock" aria-label="Navegação principal">
+    <div class="dock__panel" id="dock-menu" inert>
+      <div class="dock__panel-inner">
+        <ul class="dock__links">
+          <li><a href="../index.html#inicio"><span>01</span>Início</a></li>
+          <li><a href="../index.html#sobre"><span>02</span>Sobre</a></li>
+          <li><a href="../index.html#trabalhos"><span>03</span>Trabalhos</a></li>
+          <li><a href="../index.html#servicos"><span>04</span>Serviços</a></li>
+          <li><a href="../index.html#stack"><span>05</span>Stack</a></li>
+          <li><a href="../index.html#contato"><span>06</span>Contato</a></li>
+        </ul>
+        <div class="dock__foot">
+          <span class="status"><i></i>Disponível para projetos</span>
+          <span class="dock__socials">
+            <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener">GH</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">IN</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">IG</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dock__bar">
+      <span class="dock__avatar" aria-hidden="true">YS</span>
+      <div class="dock__info">
+        <strong>Yuri Shiroiva</strong>
+        <div class="marquee"><div class="marquee__track">
+          <span>Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+          <span aria-hidden="true">Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+        </div></div>
+      </div>
+      <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

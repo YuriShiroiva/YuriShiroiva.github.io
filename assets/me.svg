@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2a28"/>
+      <stop offset="1" stop-color="#0f0f0e"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".5" cy=".42" r=".5">
+      <stop offset="0" stop-color="#ff8a4c" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#ff8a4c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3a38"/>
+      <stop offset="1" stop-color="#1a1a19"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="600" cy="380" r="420" fill="url(#light)"/>
+  <circle cx="600" cy="360" r="132" fill="url(#body)"/>
+  <path d="M320 900 C 330 650, 460 560, 600 560 C 740 560, 870 650, 880 900Z" fill="url(#body)"/>
+  <g transform="rotate(-12 930 230)">
+    <circle cx="930" cy="230" r="76" fill="#c8ff3c"/>
+    <text x="930" y="250" text-anchor="middle" font-family="Inter Tight, Inter, Helvetica, Arial, sans-serif" font-size="54" font-weight="800" fill="#111">oi!</text>
+  </g>
+</svg>

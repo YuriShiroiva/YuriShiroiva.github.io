@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detecção de talhões por satélite — Yuri Shiroiva</title>
+  <meta name="description" content="TCC: pipeline de deep learning que detecta talhões agrícolas individuais em imagens Sentinel-2 multitemporais e entrega os polígonos em uma plataforma web.">
+  <meta name="theme-color" content="#f2f2f0">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Detecção de talhões agrícolas por satélite">
+  <meta property="og:description" content="Pipeline de deep learning com Sentinel-2: Dice mediano 0,87, fine-tuning regional 0,25 → 0,72 e separação de instâncias.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="case">
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <header class="topbar">
+    <div class="topbar__item">
+      <p>Baseado no Brasil</p>
+      <p class="topbar__muted">Python · IA · Dados</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Construindo na</p>
+      <p class="topbar__muted">IoTag</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Formação</p>
+      <p class="topbar__muted">IA Aplicada · PUCPR</p>
+    </div>
+  </header>
+  <a class="topbar__cta magnetic" href="../index.html#contato"><span class="roll"><span data-text="Fale comigo">Fale comigo</span></span></a>
+
+  <main>
+    <section class="case-hero" id="topo">
+      <a class="back-link" href="../index.html#trabalhos"><span aria-hidden="true">←</span> Todos os trabalhos</a>
+      <p class="label">TCC · IA Aplicada · PUCPR · 2026</p>
+      <h1 class="case-title" data-reveal="lines">Detecção de talhões agrícolas por satélite</h1>
+      <p class="case-lead" data-reveal="lines">Um pipeline de deep learning que encontra talhões individuais em imagens Sentinel-2 multitemporais e entrega os polígonos prontos em uma plataforma web.</p>
+      <p class="case-official">Título do trabalho: <em>Segmentação Automática de Limites de Talhões Agrícolas com Redes Neurais Profundas e Imagens Sentinel-2 Multitemporais</em></p>
+      <div class="case-actions">
+        <a class="pill magnetic" href="https://github.com/YuriShiroiva/talhoes-sentinel2" target="_blank" rel="noopener" data-cursor="GitHub">
+          <span class="roll"><span data-text="Ver código no GitHub ↗">Ver código no GitHub ↗</span></span>
+        </a>
+      </div>
+
+      <dl class="case-meta" data-reveal="fade">
+        <div><dt>Papel</dt><dd>Autor — pesquisa, modelagem e engenharia</dd></div>
+        <div><dt>Contexto</dt><dd>Trabalho de Conclusão de Curso — IA Aplicada, PUCPR</dd></div>
+        <div><dt>Ano</dt><dd>2026</dd></div>
+        <div><dt>Stack</dt><dd>Python · PyTorch · segmentation-models · Rasterio · xarray · Shapely</dd></div>
+      </dl>
+    </section>
+
+    <figure class="case-cover" data-reveal="fade">
+      <img src="../assets/projects/talhoes/cover.webp" alt="Três etapas lado a lado: imagem Sentinel-2, talhões detectados sobrepostos e máscara de instâncias com um talhão por cor" data-parallax>
+    </figure>
+
+    <!-- Problema -->
+    <section class="case-section">
+      <p class="label">O problema</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Delinear talhões à mão é caro e lento. A ideia foi automatizar isso usando só satélite gratuito e hardware modesto.</p>
+        <p>Talhões são a unidade básica da agricultura: é por eles que se planeja plantio, aplicação e colheita. O objetivo do TCC foi construir um pipeline de ponta a ponta — da imagem Sentinel-2 (10 m, gratuita) até polígonos vetoriais com área em hectares — reprodutível e validado em benchmark público.</p>
+      </div>
+    </section>
+
+    <!-- Números -->
+    <section class="stats" aria-label="Resultados principais">
+      <div class="stat" data-reveal="fade">
+        <span class="stat__value">0,87</span>
+        <span class="stat__label">Dice mediano no teste — 1.139 tiles do AI4Boundaries</span>
+      </div>
+      <div class="stat stat--dark" data-reveal="fade">
+        <span class="stat__value">0,72</span>
+        <span class="stat__label">Dice no Brasil após fine-tuning regional, partindo de 0,25 sem adaptação</span>
+      </div>
+      <div class="stat stat--accent" data-reveal="fade">
+        <span class="stat__value">+30%</span>
+        <span class="stat__label">F1 de objeto com separação de instâncias (0,455 → 0,594)</span>
+      </div>
+      <div class="stat" data-reveal="fade">
+        <span class="stat__value">30</span>
+        <span class="stat__label">canais de entrada: 5 bandas × 6 datas de satélite</span>
+      </div>
+    </section>
+
+    <!-- Método -->
+    <section class="case-section">
+      <p class="label">Como funciona</p>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">01</span>
+          <h3>Entrada multitemporal</h3>
+          <p>Seis datas de Sentinel-2 com as bandas B2, B3, B4, B8 e NDVI — 30 canais que capturam a fenologia da cultura, não só a cor de um instante.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <h3>Ensemble de 6 redes</h3>
+          <p>U-Net, DeepLabV3+ e U-Net++ com encoders ResNet-34/50, combinadas com TTA por flips para ganhar robustez.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <h3>Pós-processamento</h3>
+          <p>Limiar e área mínima calibrados na validação; depois a máscara é vetorizada em polígonos com Rasterio e Shapely.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">04</span>
+          <h3>Separação de instâncias</h3>
+          <p>Uma cabeça de 3 classes (interior, borda, fundo) separa talhões vizinhos que a segmentação semântica fundia.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">05</span>
+          <h3>Entrega</h3>
+          <p>GeoJSON com um polígono por talhão e área em hectares, servido por uma plataforma web com mapa.</p>
+        </li>
+      </ol>
+    </section>
+
+    <figure class="case-figure" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/talhoes/end_to_end_demo.webp" alt="Grade de exemplos: imagem Sentinel-2, mapa de probabilidade, talhões preditos e gabarito, com Dice entre 0,97 e 0,98" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 1</b> Ponta a ponta: imagem Sentinel-2 → probabilidade → talhões preditos, comparados ao gabarito.</figcaption>
+    </figure>
+
+    <!-- Generalização -->
+    <section class="case-section">
+      <p class="label">Generalização</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Na Europa, o modelo vai muito bem. No Brasil, sem adaptação, quase não enxerga os talhões.</p>
+        <p>Treinado no AI4Boundaries (Europa), o modelo caiu para Dice ~0,25 no benchmark Fields of The World – Brasil. Com fine-tuning usando pouco dado local, voltou para 0,72. A conclusão prática: delinear talhões é específico de região e sensor — e a saída barata é adaptar, não treinar do zero.</p>
+
+        <div class="meters" role="group" aria-label="Dice médio por cenário, de 0 a 1">
+          <p class="meters__title">Dice médio, de 0 a 1</p>
+          <div class="meter" title="Europa (domínio de treino): Dice 0,77">
+            <div class="meter__head"><span>Europa · domínio de treino</span><span class="meter__value">0,77</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.77"></div></div>
+          </div>
+          <div class="meter" title="Brasil sem adaptação (zero-shot): Dice 0,25">
+            <div class="meter__head"><span>Brasil · sem adaptação (zero-shot)</span><span class="meter__value">0,25</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.25"></div></div>
+          </div>
+          <div class="meter" title="Brasil após fine-tuning: Dice 0,72">
+            <div class="meter__head"><span>Brasil · após fine-tuning <em class="delta">+0,47</em></span><span class="meter__value">0,72</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.72"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/talhoes/ftw_antes_depois.webp" alt="Comparação no Brasil: imagem, gabarito, predição zero-shot quase vazia e predição após fine-tuning recuperando os talhões" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 2</b> Sem adaptação o modelo não enxerga o talhão brasileiro; depois do fine-tuning, recupera.</figcaption>
+    </figure>
+
+    <!-- Instâncias -->
+    <section class="case-section">
+      <p class="label">De pixel para talhão</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Acertar pixels não é o mesmo que detectar talhões.</p>
+        <p>O Dice mede área. Mas, para quem usa o sistema, cada talhão precisa ser um polígono separado — e a segmentação semântica fundia vizinhos. Treinei um modelo de 3 classes (interior, borda, fundo) que separa as instâncias, avaliado talhão a talhão em 653 talhões de teste.</p>
+
+        <div class="meters" role="group" aria-label="Métricas de objeto, de 0 a 1">
+          <p class="meters__title">F1 de objeto (IoU ≥ 0,5), de 0 a 1</p>
+          <div class="meter" title="Baseline semântico: F1 de objeto 0,455">
+            <div class="meter__head"><span>Baseline semântico</span><span class="meter__value">0,455</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.455"></div></div>
+          </div>
+          <div class="meter" title="Borda + separação: F1 de objeto 0,594">
+            <div class="meter__head"><span>Borda + separação <em class="delta">+30%</em></span><span class="meter__value">0,594</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.594"></div></div>
+          </div>
+          <p class="meters__title">Panoptic Quality, de 0 a 1</p>
+          <div class="meter" title="Baseline semântico: PQ 0,381">
+            <div class="meter__head"><span>Baseline semântico</span><span class="meter__value">0,381</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.381"></div></div>
+          </div>
+          <div class="meter" title="Borda + separação: PQ 0,512">
+            <div class="meter__head"><span>Borda + separação</span><span class="meter__value">0,512</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.512"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <figure class="case-figure" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/talhoes/instancias.webp" alt="Grade comparando imagem, gabarito de instâncias, baseline semântico que funde talhões e o modelo de borda que os separa" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 3</b> O baseline funde talhões vizinhos; a cabeça de borda separa as instâncias.</figcaption>
+    </figure>
+
+    <!-- Plataforma -->
+    <section class="case-section" id="plataforma">
+      <p class="label">Na plataforma</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">No fim, tudo vira produto: desenhe uma área no mapa e receba os talhões.</p>
+        <p>O frontend em React + Leaflet recebe a área desenhada. O backend em FastAPI busca as imagens Sentinel-2 L2A via STAC (sem credenciais), roda o modelo de 3 classes com janela deslizante e TTA e devolve um polígono por talhão, com área em hectares. A busca das 6 datas e a inferência levam de 30 a 60 segundos.</p>
+        <ul class="feature-list">
+          <li>Exportação em GeoJSON, Shapefile e GeoPackage</li>
+          <li>Detecção de pivôs centrais com transformada de Hough</li>
+          <li>Docker para CPU e GPU, com docker-compose</li>
+          <li>Testes com pytest e CI no GitHub Actions</li>
+        </ul>
+      </div>
+    </section>
+
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/talhoes/pipeline_instancias.webp" alt="Três exemplos da plataforma: imagem Sentinel-2, talhões separados sobrepostos e máscara com um polígono por talhão" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 4</b> A plataforma entregando talhões separados — um polígono por talhão.</figcaption>
+    </figure>
+
+    <!-- Decisões -->
+    <section class="case-section">
+      <p class="label">Decisões de engenharia</p>
+      <div class="decisions">
+        <article class="decision" data-reveal="fade">
+          <h3>Multitemporal em vez de RGB</h3>
+          <p>Testei segmentação em RGB de uma única data e descartei: cor e textura dependem demais da cena. As 6 datas capturam o ciclo da cultura.</p>
+        </article>
+        <article class="decision" data-reveal="fade">
+          <h3>Pré-processamento idêntico</h3>
+          <p>Ordem banda × tempo e normalização por percentil 2–98 por canal, iguais no treino e na inferência. Uma ordem errada zerava a predição — corrigi e blindei no código.</p>
+        </article>
+        <article class="decision" data-reveal="fade">
+          <h3>Avaliação sem vazamento</h3>
+          <p>Split oficial do FTW: calibração só na validação e métricas finais em 188 tiles de teste nunca vistos.</p>
+        </article>
+        <article class="decision" data-reveal="fade">
+          <h3>Hardware modesto</h3>
+          <p>Treinado numa GTX 1650: fp32 (fp16 gerava NaN) e batch pequeno — escolhas conscientes, não acaso.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Limitações -->
+    <section class="case-section">
+      <p class="label">Limitações e próximos passos</p>
+      <div class="case-body">
+        <p>Talhões muito pequenos (menos de 5% do tile) ainda são o ponto fraco, com Dice entre 0,18 e 0,49 — enquanto grandes e médios ficam entre 0,70 e 0,93. Os próximos passos são mais exemplos pequenos, imagens de maior resolução e a comparação com modelos fundacionais como o SAM.</p>
+      </div>
+    </section>
+
+    <a class="next-project" href="folhasa.html" data-cursor="Próximo">
+      <span class="label">Próximo projeto</span>
+      <span class="next-project__title">FolhaSã <span class="next-project__arrow" aria-hidden="true">→</span></span>
+    </a>
+  </main>
+
+  <footer class="footbar">
+    <span>© <span data-year>2026</span> Yuri Shiroiva</span>
+    <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </footer>
+
+  <!-- ===== Dock flutuante ===== -->
+  <nav class="dock" aria-label="Navegação principal">
+    <div class="dock__panel" id="dock-menu" inert>
+      <div class="dock__panel-inner">
+        <ul class="dock__links">
+          <li><a href="../index.html#inicio"><span>01</span>Início</a></li>
+          <li><a href="../index.html#sobre"><span>02</span>Sobre</a></li>
+          <li><a href="../index.html#trabalhos"><span>03</span>Trabalhos</a></li>
+          <li><a href="../index.html#servicos"><span>04</span>Serviços</a></li>
+          <li><a href="../index.html#stack"><span>05</span>Stack</a></li>
+          <li><a href="../index.html#contato"><span>06</span>Contato</a></li>
+        </ul>
+        <div class="dock__foot">
+          <span class="status"><i></i>Disponível para projetos</span>
+          <span class="dock__socials">
+            <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener">GH</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">IN</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">IG</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dock__bar">
+      <span class="dock__avatar" aria-hidden="true">YS</span>
+      <div class="dock__info">
+        <strong>Yuri Shiroiva</strong>
+        <div class="marquee"><div class="marquee__track">
+          <span>Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+          <span aria-hidden="true">Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+        </div></div>
+      </div>
+      <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

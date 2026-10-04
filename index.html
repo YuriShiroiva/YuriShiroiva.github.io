@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yuri Shiroiva — Desenvolvedor Python &amp; IA Aplicada</title>
+  <meta name="description" content="Portfólio de Yuri Shiroiva, desenvolvedor Python e de IA aplicada: visão computacional, deep learning com imagens de satélite e APIs em produção.">
+  <meta name="theme-color" content="#f2f2f0">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yuri Shiroiva — Desenvolvedor Python &amp; IA Aplicada">
+  <meta property="og:description" content="Visão computacional, deep learning com imagens de satélite e APIs em produção.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript><style>.loader{display:none}</style></noscript>
+</head>
+<body class="is-loading">
+
+  <!-- ===== Loader ===== -->
+  <div class="loader" aria-hidden="true">
+    <span class="loader__count">0</span>
+  </div>
+
+  <!-- ===== Cursor ===== -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- ===== Barra superior ===== -->
+  <header class="topbar">
+    <div class="topbar__item">
+      <p>Baseado no Brasil</p>
+      <p class="topbar__muted">Python · IA · Dados</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Construindo na</p>
+      <p class="topbar__muted">IoTag</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Formação</p>
+      <p class="topbar__muted">IA Aplicada · PUCPR</p>
+    </div>
+  </header>
+  <a class="topbar__cta magnetic" href="#contato"><span class="roll"><span data-text="Fale comigo">Fale comigo</span></span></a>
+
+  <main>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="inicio">
+      <div class="hero__card">
+        <div class="layer layer--preview">
+          <div class="phone"><img src="assets/projects/talhoes/tile_overlay.webp" alt=""></div>
+          <div class="phone"><img src="assets/projects/folhasa/leaf.webp" alt=""></div>
+          <div class="phone"><img src="assets/projects/falhas/resultado_final.webp" alt=""></div>
+        </div>
+
+        <div class="layer layer--stack" aria-hidden="true">
+          <div class="layer__viewport">
+            <canvas class="dots"></canvas>
+            <ul class="tech-list">
+              <li style="--i:0">Python</li>
+              <li style="--i:1">PyTorch</li>
+              <li style="--i:2">FastAPI</li>
+              <li style="--i:3">OpenCV</li>
+              <li style="--i:4">scikit-learn</li>
+              <li style="--i:5">pandas</li>
+              <li style="--i:6">Rasterio</li>
+              <li style="--i:7">Docker</li>
+              <li style="--i:8">React</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="layer layer--screens" aria-hidden="true">
+          <div class="layer__viewport">
+            <div class="screens">
+              <img src="assets/projects/talhoes/cover.webp" alt="">
+              <img src="assets/projects/plataforma/cover.webp" alt="">
+              <img src="assets/projects/folhasa/cover.webp" alt="">
+              <img src="assets/projects/falhas/cover.webp" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__title">
+        <div class="hero__kicker"><span>Um</span><span>baita</span><span>dev de</span></div>
+        <h1 class="hero__big" data-fit data-fit-max-vh="30" aria-label="Yuri Shiroiva, um baita dev de IA aplicada">IA Aplicada</h1>
+      </div>
+
+      <div class="hero__scroll">
+        <span>↓ Role para ver</span>
+        <span>coisa boa ↓</span>
+      </div>
+    </section>
+
+    <!-- ===== Sobre ===== -->
+    <section class="about" id="sobre">
+      <div class="about__copy">
+        <p class="label">Sobre mim</p>
+        <p class="about__text" data-scrub-words>
+          Desenvolvedor Python com formação em IA Aplicada pela PUCPR. Na IoTag, construo serviços que transformam a telemetria de máquinas agrícolas em dados úteis.
+          Nos meus projetos, treino redes neurais que enxergam o campo — por satélite e por foto — e levo os modelos do notebook até a produção.
+        </p>
+      </div>
+      <figure class="about__media" data-reveal="fade">
+        <img src="assets/me.svg" alt="Foto de Yuri Shiroiva" data-parallax>
+      </figure>
+    </section>
+
+    <!-- ===== Trabalhos ===== -->
+    <section class="work" id="trabalhos">
+      <h2 class="mega" data-fit data-split-chars><span>Trabalhos</span><span>'26</span></h2>
+
+      <div class="projects">
+        <a class="project" href="projetos/talhoes.html" data-cursor="Ver projeto">
+          <div class="project__media"><div class="project__zoom"><img src="assets/projects/talhoes/cover.webp" alt="Imagem Sentinel-2, talhões detectados e máscara de instâncias lado a lado" data-parallax></div></div>
+          <div class="project__meta">
+            <span class="project__name"><i style="--c:#c8ff3c"></i>Talhões por satélite</span>
+            <span class="project__info"><span>TCC</span><span>2026</span></span>
+          </div>
+          <div class="project__tags marquee"><div class="marquee__track">
+            <span>Deep Learning, PyTorch, Sentinel-2, Segmentação, U-Net, Ensemble, Rasterio, GeoJSON,</span>
+            <span aria-hidden="true">Deep Learning, PyTorch, Sentinel-2, Segmentação, U-Net, Ensemble, Rasterio, GeoJSON,</span>
+          </div></div>
+        </a>
+
+        <a class="project" href="projetos/talhoes.html#plataforma" data-cursor="Ver projeto">
+          <div class="project__media"><div class="project__zoom"><img src="assets/projects/plataforma/cover.webp" alt="Mosaico de imagens de satélite e os talhões separados pelo modelo" data-parallax></div></div>
+          <div class="project__meta">
+            <span class="project__name"><i style="--c:#5a78ff"></i>Plataforma de talhões</span>
+            <span class="project__info"><span>Produto</span><span>2026</span></span>
+          </div>
+          <div class="project__tags marquee"><div class="marquee__track">
+            <span>React, Leaflet, FastAPI, PyTorch, STAC, GeoJSON, Shapefile, Docker, GitHub Actions,</span>
+            <span aria-hidden="true">React, Leaflet, FastAPI, PyTorch, STAC, GeoJSON, Shapefile, Docker, GitHub Actions,</span>
+          </div></div>
+        </a>
+
+        <a class="project" href="projetos/folhasa.html" data-cursor="Ver projeto">
+          <div class="project__media"><div class="project__zoom"><img src="assets/projects/folhasa/cover.webp" alt="Página de demonstração do FolhaSã aberta no navegador" data-parallax></div></div>
+          <div class="project__meta">
+            <span class="project__name"><i style="--c:#3f8f3a"></i>FolhaSã</span>
+            <span class="project__info"><span>Visão computacional</span><span>2026</span></span>
+          </div>
+          <div class="project__tags marquee"><div class="marquee__track">
+            <span>EfficientNet, Transfer learning, PyTorch, timm, FastAPI, ONNX, MLflow, pytest,</span>
+            <span aria-hidden="true">EfficientNet, Transfer learning, PyTorch, timm, FastAPI, ONNX, MLflow, pytest,</span>
+          </div></div>
+        </a>
+
+        <a class="project" href="projetos/falhas.html" data-cursor="Ver projeto">
+          <div class="project__media"><div class="project__zoom"><img src="assets/projects/falhas/cover.webp" alt="Peça metálica, bordas detectadas e a fissura destacada em vermelho" data-parallax></div></div>
+          <div class="project__meta">
+            <span class="project__name"><i style="--c:#ff5a28"></i>Falhas industriais</span>
+            <span class="project__info"><span>Indústria 4.0</span><span>2026</span></span>
+          </div>
+          <div class="project__tags marquee"><div class="marquee__track">
+            <span>OpenCV, CLAHE, Canny, Morfologia, Segmentação, NumPy,</span>
+            <span aria-hidden="true">OpenCV, CLAHE, Canny, Morfologia, Segmentação, NumPy,</span>
+          </div></div>
+        </a>
+      </div>
+
+      <a class="link-arrow" href="https://github.com/YuriShiroiva" target="_blank" rel="noopener">Mais no GitHub <span aria-hidden="true">→</span></a>
+    </section>
+
+    <!-- ===== Serviços ===== -->
+    <section class="services" id="servicos">
+      <div class="services__inner">
+        <p class="label">Serviços</p>
+        <p class="services__intro" data-reveal="lines">
+          Do dado bruto ao produto: treino modelos de visão computacional, construo as APIs que os servem e as interfaces que colocam o resultado na mão de quem decide no campo.
+        </p>
+
+        <div class="services__list">
+          <article class="service" style="--i:0">
+            <span class="service__num">01</span>
+            <h3 class="service__title">Visão computacional</h3>
+            <div class="service__body">
+              <p>Modelos que enxergam: segmentação, classificação e detecção em imagens de satélite, de lavoura e de linha de produção.</p>
+              <ul class="chips">
+                <li>PyTorch</li><li>Segmentação</li><li>Classificação</li><li>Transfer learning</li><li>OpenCV</li><li>Sensoriamento remoto</li>
+              </ul>
+            </div>
+            <figure class="service__media"><img src="assets/projects/talhoes/tile_instancias.webp" alt=""></figure>
+          </article>
+
+          <article class="service" style="--i:1">
+            <span class="service__num">02</span>
+            <h3 class="service__title">Back-end &amp; APIs</h3>
+            <div class="service__body">
+              <p>Microsserviços em Python que recebem, decodificam e servem dados — da telemetria de máquinas agrícolas à inferência de modelos.</p>
+              <ul class="chips">
+                <li>Python</li><li>FastAPI</li><li>Microsserviços</li><li>Mensageria</li><li>Bancos de dados</li><li>Docker</li>
+              </ul>
+            </div>
+            <figure class="service__media"><img src="assets/services/backend.svg" alt=""></figure>
+          </article>
+
+          <article class="service" style="--i:2">
+            <span class="service__num">03</span>
+            <h3 class="service__title">Do modelo ao produto</h3>
+            <div class="service__body">
+              <p>Levo o modelo do notebook até o usuário: API de inferência, interface web, exportação do modelo e testes automatizados.</p>
+              <ul class="chips">
+                <li>TorchScript / ONNX</li><li>React</li><li>Mapas</li><li>MLflow</li><li>CI/CD</li><li>pytest</li>
+              </ul>
+            </div>
+            <figure class="service__media"><img src="assets/projects/folhasa/demo.webp" alt=""></figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stack ===== -->
+    <section class="stack" id="stack">
+      <h2 class="stack__title" aria-label="Stack moderna">
+        <span class="stack__line" data-roll>Stack</span>
+        <span class="stack__line" data-roll>Moderna</span>
+      </h2>
+
+      <p class="label">Profissional em</p>
+      <ul class="logos">
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/python.svg" alt="" loading="lazy"><span>Python</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/pytorch.svg" alt="" loading="lazy"><span>PyTorch</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/fastapi.svg" alt="" loading="lazy"><span>FastAPI</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/opencv.svg" alt="" loading="lazy"><span>OpenCV</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/scikitlearn.svg" alt="" loading="lazy"><span>scikit-learn</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/pandas.svg" alt="" loading="lazy"><span>pandas</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/numpy.svg" alt="" loading="lazy"><span>NumPy</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/docker.svg" alt="" loading="lazy"><span>Docker</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/postgresql.svg" alt="" loading="lazy"><span>PostgreSQL</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/react.svg" alt="" loading="lazy"><span>React</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/typescript.svg" alt="" loading="lazy"><span>TypeScript</span></li>
+        <li class="logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/git.svg" alt="" loading="lazy"><span>Git</span></li>
+      </ul>
+    </section>
+
+    <!-- ===== Contato / Rodapé ===== -->
+    <footer class="footer" id="contato">
+      <div class="contact">
+        <p class="label">Contato</p>
+        <h2 class="contact__title" data-reveal="lines">Tem uma ideia?<br>Bora tirar do papel.</h2>
+        <div class="contact__actions">
+          <a class="pill magnetic" href="mailto:yurishiroivabr@gmail.com" data-cursor="Escrever">
+            <span class="roll"><span data-text="yurishiroivabr@gmail.com">yurishiroivabr@gmail.com</span></span>
+          </a>
+          <button class="pill pill--ghost" type="button" data-copy="yurishiroivabr@gmail.com">Copiar e-mail</button>
+        </div>
+      </div>
+
+      <div class="bento">
+        <a class="tile tile--work" href="#trabalhos"><span class="tile__arrow" aria-hidden="true">↗</span><span>Trabalhos</span></a>
+        <a class="tile tile--lab" href="projetos/talhoes.html"><span class="tile__arrow" aria-hidden="true">↗</span><span>TCC</span></a>
+        <a class="tile tile--contact" href="mailto:yurishiroivabr@gmail.com"><span class="tile__arrow" aria-hidden="true">↗</span><span>Contato</span></a>
+        <a class="tile tile--github" href="https://github.com/YuriShiroiva" target="_blank" rel="noopener"><span class="tile__arrow" aria-hidden="true">↗</span><span>GitHub</span></a>
+        <a class="tile tile--instagram" href="https://instagram.com/" target="_blank" rel="noopener"><span class="tile__arrow" aria-hidden="true">↗</span><span>Instagram</span></a>
+        <a class="tile tile--linkedin" href="https://linkedin.com/" target="_blank" rel="noopener"><span class="tile__arrow" aria-hidden="true">↗</span><span>LinkedIn</span></a>
+        <div class="bento__name" aria-hidden="true"><span data-fit>shiroiva</span></div>
+      </div>
+
+      <div class="footbar">
+        <span>© <span data-year>2026</span> Yuri Shiroiva</span>
+        <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+        <a href="#inicio">Voltar ao topo ↑</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ===== Dock flutuante ===== -->
+  <nav class="dock" aria-label="Navegação principal">
+    <div class="dock__panel" id="dock-menu" inert>
+      <div class="dock__panel-inner">
+        <ul class="dock__links">
+          <li><a href="#inicio"><span>01</span>Início</a></li>
+          <li><a href="#sobre"><span>02</span>Sobre</a></li>
+          <li><a href="#trabalhos"><span>03</span>Trabalhos</a></li>
+          <li><a href="#servicos"><span>04</span>Serviços</a></li>
+          <li><a href="#stack"><span>05</span>Stack</a></li>
+          <li><a href="#contato"><span>06</span>Contato</a></li>
+        </ul>
+        <div class="dock__foot">
+          <span class="status"><i></i>Disponível para projetos</span>
+          <span class="dock__socials">
+            <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener">GH</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">IN</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">IG</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dock__bar">
+      <span class="dock__avatar" aria-hidden="true">YS</span>
+      <div class="dock__info">
+        <strong>Yuri Shiroiva</strong>
+        <div class="marquee"><div class="marquee__track">
+          <span>Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+          <span aria-hidden="true">Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+        </div></div>
+      </div>
+      <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

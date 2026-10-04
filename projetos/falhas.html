@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detecção de falhas em peças metálicas — Yuri Shiroiva</title>
+  <meta name="description" content="Pipeline de visão computacional com OpenCV (CLAHE, Canny, morfologia e segmentação por forma) que detecta uma fissura em chapa metálica.">
+  <meta name="theme-color" content="#f2f2f0">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Detecção de falhas em peças metálicas">
+  <meta property="og:description" content="Pipeline de visão computacional com OpenCV (CLAHE, Canny, morfologia e segmentação por forma) que detecta uma fissura em chapa metálica.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="case">
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <header class="topbar">
+    <div class="topbar__item">
+      <p>Baseado no Brasil</p>
+      <p class="topbar__muted">Python · IA · Dados</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Construindo na</p>
+      <p class="topbar__muted">IoTag</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Formação</p>
+      <p class="topbar__muted">IA Aplicada · PUCPR</p>
+    </div>
+  </header>
+  <a class="topbar__cta magnetic" href="../index.html#contato"><span class="roll"><span data-text="Fale comigo">Fale comigo</span></span></a>
+
+  <main>
+    <section class="case-hero" id="topo">
+      <a class="back-link" href="../index.html#trabalhos"><span aria-hidden="true">←</span> Todos os trabalhos</a>
+      <p class="label">Processamento de imagens · IA na Indústria 4.0 · PUCPR · 2026</p>
+      <h1 class="case-title" data-reveal="lines">Detecção de falhas em peças metálicas</h1>
+      <p class="case-lead" data-reveal="lines">Um pipeline clássico de visão computacional, com técnicas encadeadas, que encontra e destaca uma fissura numa chapa metálica — sem rede neural.</p>
+      <div class="case-actions">
+        <a class="pill magnetic" href="https://github.com/YuriShiroiva/deteccao-falhas-opencv" target="_blank" rel="noopener" data-cursor="GitHub">
+          <span class="roll"><span data-text="Ver código no GitHub ↗">Ver código no GitHub ↗</span></span>
+        </a>
+      </div>
+
+      <dl class="case-meta" data-reveal="fade">
+        <div><dt>Papel</dt><dd>Autor</dd></div>
+        <div><dt>Contexto</dt><dd>Disciplina IA na Indústria 4.0 — PUCPR</dd></div>
+        <div><dt>Ano</dt><dd>2026</dd></div>
+        <div><dt>Stack</dt><dd>Python · OpenCV · NumPy · Matplotlib</dd></div>
+      </dl>
+    </section>
+
+    <figure class="case-cover" data-reveal="fade">
+      <img src="../assets/projects/falhas/cover.webp" alt="Peça original, bordas detectadas pelo Canny e a fissura destacada em vermelho" data-parallax>
+    </figure>
+
+    <section class="case-section">
+      <p class="label">A ideia</p>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">Nem todo problema precisa de deep learning. Aqui, técnicas clássicas bem encadeadas resolvem.</p>
+        <p>Cada técnica é aplicada sobre o resultado da anterior, e todas as imagens intermediárias são salvas para o relatório técnico.</p>
+        <p>A peça é uma chapa sintética gerada pelo próprio script, com semente fixa: tem rebites e manchas de corrosão que não podem ser confundidos com a falha.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <p class="label">O pipeline</p>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">01</span>
+          <h3>Escala de cinza</h3>
+          <p>A cor não ajuda a achar a fissura; trabalhar com um canal simplifica as etapas seguintes.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">02</span>
+          <h3>Suavização gaussiana</h3>
+          <p>Kernel 7×7 remove o ruído da superfície antes de procurar bordas.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">03</span>
+          <h3>Realce com CLAHE</h3>
+          <p>Equalização adaptativa (clip 2,0, grade 8×8) compensa a iluminação desigual da chapa.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">04</span>
+          <h3>Bordas com Canny</h3>
+          <p>Limiares 50/150 destacam as transições fortes — a fissura e os rebites.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">05</span>
+          <h3>Fechamento morfológico</h3>
+          <p>Elipse 5×5 em 2 iterações reconecta os trechos quebrados da fissura.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">06</span>
+          <h3>Segmentação por forma</h3>
+          <p>Mantém só componentes longos (diagonal &gt; 60 px) e alongados (razão &gt; 2), descartando os rebites redondos.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">07</span>
+          <h3>Resultado</h3>
+          <p>A fissura é pintada de vermelho e marcada com uma caixa “FALHA DETECTADA”.</p>
+        </li>
+      </ol>
+    </section>
+
+    <figure class="case-figure" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../assets/projects/falhas/painel_comparativo.webp" alt="Painel com as oito etapas do pipeline, da imagem original ao resultado" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 1</b> As etapas lado a lado, da imagem original à falha detectada.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <p class="label">Limitações e próximos passos</p>
+      <div class="case-body">
+        <p>Os limiares foram ajustados para esta cena. Em fotos reais, com iluminação e texturas variadas, o próximo passo seria calibrá-los num conjunto de imagens ou trocar a segmentação por um modelo treinado.</p>
+      </div>
+    </section>
+
+    <a class="next-project" href="talhoes.html" data-cursor="Próximo">
+      <span class="label">Próximo projeto</span>
+      <span class="next-project__title">Talhões por satélite <span class="next-project__arrow" aria-hidden="true">→</span></span>
+    </a>
+  </main>
+
+  <footer class="footbar">
+    <span>© <span data-year>2026</span> Yuri Shiroiva</span>
+    <span class="hide-sm">Brasil · <span data-clock>--:--:--</span></span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </footer>
+
+  <!-- ===== Dock flutuante ===== -->
+  <nav class="dock" aria-label="Navegação principal">
+    <div class="dock__panel" id="dock-menu" inert>
+      <div class="dock__panel-inner">
+        <ul class="dock__links">
+          <li><a href="../index.html#inicio"><span>01</span>Início</a></li>
+          <li><a href="../index.html#sobre"><span>02</span>Sobre</a></li>
+          <li><a href="../index.html#trabalhos"><span>03</span>Trabalhos</a></li>
+          <li><a href="../index.html#servicos"><span>04</span>Serviços</a></li>
+          <li><a href="../index.html#stack"><span>05</span>Stack</a></li>
+          <li><a href="../index.html#contato"><span>06</span>Contato</a></li>
+        </ul>
+        <div class="dock__foot">
+          <span class="status"><i></i>Disponível para projetos</span>
+          <span class="dock__socials">
+            <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener">GH</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">IN</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">IG</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dock__bar">
+      <span class="dock__avatar" aria-hidden="true">YS</span>
+      <div class="dock__info">
+        <strong>Yuri Shiroiva</strong>
+        <div class="marquee"><div class="marquee__track">
+          <span>Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+          <span aria-hidden="true">Desenvolvedor Python, Visão computacional, Deep Learning, Sensoriamento remoto, APIs com FastAPI, IA aplicada ao agro,</span>
+        </div></div>
+      </div>
+      <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
