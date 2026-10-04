@@ -6,7 +6,7 @@
   <g fill="none" stroke-width="4" stroke-linecap="round">
     <path d="M200 160 C 320 160, 300 300, 400 300" stroke="#7dd3fc"/>
     <path d="M200 440 C 320 440, 300 300, 400 300" stroke="#a78bfa"/>
-    <path d="M400 300 C 500 300, 480 170, 600 170" stroke="#c8ff3c"/>
+    <path d="M400 300 C 500 300, 480 170, 600 170" stroke="#9b85ff"/>
     <path d="M400 300 C 500 300, 480 430, 600 430" stroke="#f472b6"/>
   </g>
   <g>
@@ -16,14 +16,14 @@
     <rect x="110" y="400" width="180" height="80" rx="18" fill="#1a2238" stroke="#a78bfa" stroke-width="3"/>
     <rect x="134" y="426" width="80" height="12" rx="6" fill="#a78bfa"/>
     <rect x="134" y="448" width="120" height="10" rx="5" fill="#ffffff" fill-opacity=".25"/>
-    <circle cx="400" cy="300" r="66" fill="#c8ff3c"/>
+    <circle cx="400" cy="300" r="66" fill="#9b85ff"/>
     <g fill="none" stroke="#0e1424" stroke-width="7" stroke-linecap="round">
       <ellipse cx="400" cy="282" rx="30" ry="10"/>
       <path d="M370 282v34c0 6 13 10 30 10s30-4 30-10v-34"/>
       <path d="M370 299c0 6 13 10 30 10s30-4 30-10"/>
     </g>
-    <rect x="560" y="130" width="160" height="80" rx="18" fill="#1a2238" stroke="#c8ff3c" stroke-width="3"/>
-    <rect x="584" y="156" width="70" height="12" rx="6" fill="#c8ff3c"/>
+    <rect x="560" y="130" width="160" height="80" rx="18" fill="#1a2238" stroke="#9b85ff" stroke-width="3"/>
+    <rect x="584" y="156" width="70" height="12" rx="6" fill="#9b85ff"/>
     <rect x="584" y="178" width="110" height="10" rx="5" fill="#ffffff" fill-opacity=".25"/>
     <rect x="560" y="390" width="160" height="80" rx="18" fill="#1a2238" stroke="#f472b6" stroke-width="3"/>
     <rect x="584" y="416" width="70" height="12" rx="6" fill="#f472b6"/>
