@@ -44,7 +44,7 @@ O hero foi inspirado no portfólio de [Moncy Yohannan](https://github.com/MoncyD
 
 ## Cache do navegador
 
-O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004i`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
+O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004j`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
 
 ## Publicar no GitHub Pages
 

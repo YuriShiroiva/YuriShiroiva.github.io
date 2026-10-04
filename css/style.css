@@ -315,7 +315,8 @@ button:hover .roll > span { transform: translateY(-100%); }
   line-height: .95;
   letter-spacing: -.045em;
 }
-.about__copy .section-title { margin-bottom: 44px; }
+.about__copy .section-title,
+.contact .section-title { margin-bottom: 44px; }
 .work .section-title { padding: 0 var(--pad); }
 
 /* ---------- Sobre ---------- */
@@ -710,11 +711,11 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
 .footer { padding: 10vh 8px 0; }
 .contact { padding: 0 calc(var(--pad) - 8px) 10vh; }
 .contact__title {
-  margin: 16px 0 5vh;
-  font-size: clamp(44px, 7.4vw, 128px);
-  font-weight: 700;
-  line-height: .92;
-  letter-spacing: -.045em;
+  margin: 0 0 5vh;
+  font-size: clamp(24px, 2.6vw, 42px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -.03em;
 }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .pill {
