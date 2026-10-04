@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9b85ff" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#9b85ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#0f0d22"/>
+  <g stroke="#ffffff" stroke-opacity=".06" stroke-width="2">
+    <path d="M0 100H800M0 200H800M0 300H800M0 400H800M0 500H800M100 0V600M200 0V600M300 0V600M400 0V600M500 0V600M600 0V600M700 0V600"/>
+  </g>
+  <!-- pipeline: bruto -> transformação -> armazenamento -->
+  <g>
+    <rect x="70" y="70" width="170" height="96" rx="20" fill="#1b1838" stroke="#38bdf8" stroke-width="3"/>
+    <g fill="#38bdf8"><rect x="96" y="96" width="14" height="14" rx="3"/><rect x="118" y="96" width="14" height="14" rx="3" fill-opacity=".6"/><rect x="140" y="96" width="14" height="14" rx="3"/><rect x="162" y="96" width="14" height="14" rx="3" fill-opacity=".4"/><rect x="96" y="122" width="14" height="14" rx="3" fill-opacity=".5"/><rect x="118" y="122" width="14" height="14" rx="3"/><rect x="140" y="122" width="14" height="14" rx="3" fill-opacity=".7"/></g>
+    <rect x="315" y="70" width="170" height="96" rx="20" fill="#6d4dff"/>
+    <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"><path d="M355 100h90M355 118h60M355 136h75"/></g>
+    <rect x="560" y="70" width="170" height="96" rx="20" fill="#1b1838" stroke="#b4a5ff" stroke-width="3"/>
+    <g fill="none" stroke="#b4a5ff" stroke-width="5"><ellipse cx="645" cy="98" rx="34" ry="10"/><path d="M611 98v38c0 6 15 10 34 10s34-4 34-10V98"/><path d="M611 117c0 6 15 10 34 10s34-4 34-10"/></g>
+    <g fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M248 118h56M292 108l12 10-12 10"/>
+      <path d="M493 118h56M537 108l12 10-12 10"/>
+    </g>
+  </g>
+  <!-- série temporal -->
+  <g transform="translate(70 230)">
+    <rect width="660" height="300" rx="24" fill="#16142f"/>
+    <path d="M30 230 C 80 210, 110 160, 160 175 S 240 120, 290 140 S 370 70, 420 95 S 500 60, 550 80 S 610 50, 630 55 L630 270 L30 270Z" fill="url(#area)"/>
+    <path d="M30 230 C 80 210, 110 160, 160 175 S 240 120, 290 140 S 370 70, 420 95 S 500 60, 550 80 S 610 50, 630 55" fill="none" stroke="#9b85ff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M30 250 C 90 240, 120 220, 170 228 S 250 200, 300 210 S 380 170, 430 185 S 510 160, 560 168 S 610 150, 630 148" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/>
+    <circle cx="420" cy="95" r="9" fill="#0f0d22" stroke="#b4a5ff" stroke-width="5"/>
+  </g>
+</svg>
