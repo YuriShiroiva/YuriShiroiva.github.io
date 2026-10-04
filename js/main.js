@@ -209,12 +209,12 @@
 
   ScrollTrigger.addEventListener('refreshInit', fitAll);
 
-  /* ---------- Hero: avatar acompanha o mouse ---------- */
-  const avatar = $('.avatar');
-  if (avatar && finePointer && !reduceMotion) {
+  /* ---------- Hero: card de satélite inclina seguindo o mouse ---------- */
+  const scan = $('.scan');
+  if (scan && finePointer && !reduceMotion) {
     const intro = $('.intro');
-    const rotX = gsap.quickTo(avatar, 'rotationX', { duration: 0.9, ease: 'power3' });
-    const rotY = gsap.quickTo(avatar, 'rotationY', { duration: 0.9, ease: 'power3' });
+    const rotX = gsap.quickTo(scan, 'rotationX', { duration: 0.9, ease: 'power3' });
+    const rotY = gsap.quickTo(scan, 'rotationY', { duration: 0.9, ease: 'power3' });
     const glows = $$('.intro__glow').map((g, i) => ({
       x: gsap.quickTo(g, 'x', { duration: 1.4, ease: 'power3' }),
       y: gsap.quickTo(g, 'y', { duration: 1.4, ease: 'power3' }),
@@ -224,8 +224,8 @@
       const r = intro.getBoundingClientRect();
       const nx = (e.clientX - r.left) / r.width - 0.5;
       const ny = (e.clientY - r.top) / r.height - 0.5;
-      rotY(nx * 10);
-      rotX(-ny * 6);
+      rotY(nx * 24);
+      rotX(-ny * 18);
       glows.forEach((g) => { g.x(nx * g.k); g.y(ny * g.k); });
     });
     intro.addEventListener('pointerleave', () => { rotX(0); rotY(0); });
@@ -444,7 +444,7 @@
     const introBits = '.intro__hello, .intro__actions, .intro__label, .intro__role, .intro__summary, .intro__social, .intro__hint';
     gsap.set(nameChars, { yPercent: 115 });
     gsap.set(introBits, { y: 30, opacity: 0 });
-    gsap.set('.avatar', { yPercent: 12, opacity: 0 });
+    gsap.set('.scan', { scale: 0.82, opacity: 0 });
     gsap.set('.intro__bg', { opacity: 0 });
     gsap.set(['.topbar', '.topbar__cta', '.dock'], { autoAlpha: 0 });
     gsap.set(loader, { clipPath: 'inset(0% 0% 0% 0%)' });
@@ -476,7 +476,7 @@
         .add(done, '-=.5')
         .to('.intro__bg', { opacity: 1, duration: 1.4, ease: 'power2.out' }, '-=.6')
         .to(nameChars, { yPercent: 0, duration: 1.2, ease: 'expo.out', stagger: 0.03 }, '<')
-        .to('.avatar', { yPercent: 0, opacity: 1, duration: 1.4, ease: 'expo.out' }, '<.1')
+        .to('.scan', { scale: 1, opacity: 1, duration: 1.4, ease: 'expo.out' }, '<.1')
         .to(introBits, { y: 0, opacity: 1, duration: 1, ease: 'expo.out', stagger: 0.06 }, '<.2')
         .to(['.topbar', '.topbar__cta'], { autoAlpha: 1, duration: 0.8 }, '<')
         .fromTo('.dock', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1, ease: 'expo.out' }, '<.1');
