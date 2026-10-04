@@ -845,7 +845,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   justify-content: space-between;
   align-items: center;
   margin: 12px 8px 0;
-  padding: 14px 10px;
+  padding: 10px 10px;
   border-top: 1px solid var(--dark-line);
   font-size: 12px;
   font-weight: 600;
@@ -860,8 +860,19 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   animation: pulse 2s infinite;
 }
 @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(180, 165, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 165, 255, 0); } }
-.dock__socials { display: flex; gap: 14px; color: #8d8d8d; }
-.dock__socials a:hover { color: var(--accent-2); }
+.dock__socials { display: flex; gap: 8px; }
+.dock__socials a {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: #cfcfcf;
+  transition: background-color .3s, color .3s;
+}
+.dock__socials a:hover { background: #fff; color: var(--ink); }
+.dock__socials svg { width: 16px; height: 16px; }
 
 .dock__bar {
   display: grid;

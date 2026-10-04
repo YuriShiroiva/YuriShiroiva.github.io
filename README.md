@@ -40,7 +40,7 @@ assets/             → imagens (capas e figuras dos projetos)
 
 ## Cache do navegador
 
-O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004m`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
+O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004n`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
 
 ## Publicar no GitHub Pages
 
