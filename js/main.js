@@ -129,6 +129,22 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   document.addEventListener('click', (e) => { if (!dock.contains(e.target)) setMenu(false); });
 
+  /* ---------- Experiência: caixas que abrem ao clicar ---------- */
+  $$('.job__head').forEach((btn) => {
+    const job = btn.closest('.job');
+    const panel = $(`#${btn.getAttribute('aria-controls')}`);
+    btn.addEventListener('click', () => {
+      const open = !job.classList.contains('is-open');
+      job.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      panel.inert = !open;
+    });
+    // a altura da página muda: recalcula as animações de scroll abaixo
+    panel.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'grid-template-rows' && hasGsap) ScrollTrigger.refresh();
+    });
+  });
+
   /* ---------- Links âncora ---------- */
   $$('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {

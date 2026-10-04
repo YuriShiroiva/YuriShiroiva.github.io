@@ -141,53 +141,55 @@
     <!-- ===== Experiência ===== -->
     <section class="xp" id="experiencia">
       <p class="label">Experiência</p>
-      <div class="xp__company">
-        <h2 class="xp__title" data-reveal="lines">IoTag</h2>
-        <div class="xp__meta">
-          <p class="xp__role">Cientista de Dados / Engenheiro de IA</p>
-          <p class="xp__period">2024 — hoje · plataforma de IoT para o agro</p>
-        </div>
-      </div>
-      <p class="xp__lead">Responsável de ponta a ponta pelo pipeline de dados e pela camada de IA aplicada de uma plataforma de telemetria de máquinas agrícolas.</p>
-      <div class="xp__grid">
-        <article class="xp-card xp-card--featured" data-reveal="fade">
-          <span class="xp-card__num">01</span>
-          <h3>Diagnóstico de máquinas com LLM</h3>
-          <p>Projetei e entreguei de ponta a ponta: a telemetria sai do Cassandra, passa por sumarização de contexto, chega ao Claude na Vertex AI e volta como saída estruturada, validada por schema, na interface do produto.</p>
-          <ul class="xp-card__tags"><li>LLM</li><li>Vertex AI</li><li>JSON Schema</li><li>Cassandra</li></ul>
+      <div class="jobs">
+        <article class="job" data-reveal="fade">
+          <button class="job__head" type="button" aria-expanded="false" aria-controls="job-iotag">
+            <span class="job__period">2024 — hoje</span>
+            <span class="job__main">
+              <span class="job__company">IoTag</span>
+              <span class="job__role">Cientista de Dados / Engenheiro de IA</span>
+            </span>
+            <span class="job__summary">Pipeline de dados e camada de IA de uma plataforma de telemetria de máquinas agrícolas.</span>
+            <span class="job__toggle" aria-hidden="true"></span>
+            <span class="sr-only">Ver tudo o que fiz na IoTag</span>
+          </button>
+          <div class="job__panel" id="job-iotag" role="region" aria-label="O que fiz na IoTag" inert>
+            <div class="job__panel-inner">
+              <ul class="job__list">
+              <li><strong>Diagnóstico de máquinas com LLM</strong><span>Projetei e entreguei de ponta a ponta: a telemetria sai do Cassandra, passa por sumarização de contexto, chega ao Claude na Vertex AI e volta como saída estruturada, validada por schema, na interface do produto.</span></li>
+              <li><strong>Agentes para o CAN bus</strong><span>Sistema multiagente com servidores de ferramentas MCP para engenharia reversa de mensagens CAN não documentadas, validado com âncoras de ground truth e conjunto de retenção.</span></li>
+              <li><strong>Pipelines de telemetria</strong><span>Python que transforma a telemetria bruta CAN/ISOBUS em datasets estruturados, mapas de cobertura em GeoJSON e arquivos de tarefa ISOXML no padrão.</span></li>
+              <li><strong>Histórico auditável</strong><span>Schema bitemporal append-only no Cassandra (TIMEUUID + intervalos de validade): cada operação de campo rastreável, no lugar de um modelo que apagava o histórico.</span></li>
+              <li><strong>Correções em produção</strong><span>Diagnóstico e correção de defeitos no serviço de ingestão, como um erro de conversão de unidades na compensação de atraso de vazão e um bug de agregação nos totais de produto aplicado.</span></li>
+              <li><strong>Vários fabricantes</strong><span>Registro de plugins por decorators para equipamentos John Deere, Massey Ferguson, Fendt, Horsch, Kuhn e Trimble, sem alterar o núcleo do pipeline.</span></li>
+              <li><strong>Nuvem</strong><span>Apoio à migração de AWS para GCP e acesso seguro via túnel IAP ao PostgreSQL isolado em VPC.</span></li>
+              </ul>
+              <ul class="job__tags"><li>LLM</li><li>Vertex AI</li><li>MCP</li><li>Python</li><li>Cassandra</li><li>PostgreSQL</li><li>CAN · ISOBUS</li><li>GCP</li><li>AWS</li></ul>
+            </div>
+          </div>
         </article>
-        <article class="xp-card" data-reveal="fade">
-          <span class="xp-card__num">02</span>
-          <h3>Agentes que decifram o CAN bus</h3>
-          <p>Sistema multiagente com servidores MCP para engenharia reversa de mensagens CAN não documentadas, validado com âncoras de ground truth e conjunto de retenção.</p>
-          <ul class="xp-card__tags"><li>Multiagente</li><li>MCP</li><li>CAN · ISOBUS</li></ul>
+        <article class="job" data-reveal="fade">
+          <button class="job__head" type="button" aria-expanded="false" aria-controls="job-optcore">
+            <span class="job__period">2023 — 2024</span>
+            <span class="job__main">
+              <span class="job__company">Optcore</span>
+              <span class="job__role">Estagiário de Desenvolvimento de Software</span>
+            </span>
+            <span class="job__summary">Back-end, APIs REST e qualidade de dados para uma aplicação web.</span>
+            <span class="job__toggle" aria-hidden="true"></span>
+            <span class="sr-only">Ver tudo o que fiz na Optcore</span>
+          </button>
+          <div class="job__panel" id="job-optcore" role="region" aria-label="O que fiz na Optcore" inert>
+            <div class="job__panel-inner">
+              <ul class="job__list">
+              <li><strong>Back-end e APIs</strong><span>Desenvolvi e mantive serviços de back-end e APIs REST que sustentavam funcionalidades centrais da aplicação web.</span></li>
+              <li><strong>Qualidade de dados</strong><span>Rotinas de limpeza, transformação e validação de dados vindos de fontes heterogêneas.</span></li>
+              <li><strong>Deduplicação</strong><span>Distância de Levenshtein e correspondência aproximada para encontrar registros duplicados e elevar a qualidade da base.</span></li>
+              </ul>
+              <ul class="job__tags"><li>APIs REST</li><li>Python</li><li>Qualidade de dados</li><li>Levenshtein</li></ul>
+            </div>
+          </div>
         </article>
-        <article class="xp-card" data-reveal="fade">
-          <span class="xp-card__num">03</span>
-          <h3>Pipelines de telemetria</h3>
-          <p>Python que transforma CAN/ISOBUS bruto em datasets estruturados, mapas de cobertura em GeoJSON e arquivos de tarefa ISOXML no padrão.</p>
-          <ul class="xp-card__tags"><li>ETL</li><li>Séries temporais</li><li>GeoJSON</li></ul>
-        </article>
-        <article class="xp-card" data-reveal="fade">
-          <span class="xp-card__num">04</span>
-          <h3>Histórico auditável</h3>
-          <p>Schema bitemporal append-only no Cassandra (TIMEUUID + intervalos de validade): cada operação de campo rastreável, no lugar de um modelo que apagava o histórico.</p>
-          <ul class="xp-card__tags"><li>Cassandra</li><li>Modelagem de dados</li></ul>
-        </article>
-        <article class="xp-card" data-reveal="fade">
-          <span class="xp-card__num">05</span>
-          <h3>Multi-fabricante e nuvem</h3>
-          <p>Registro de plugins por decorators para John Deere, Massey Ferguson, Fendt e outros sem tocar no núcleo; apoio à migração AWS → GCP com acesso seguro via túnel IAP.</p>
-          <ul class="xp-card__tags"><li>Arquitetura</li><li>GCP</li><li>AWS</li></ul>
-        </article>
-      </div>
-      <div class="xp__prev" data-reveal="fade">
-        <span class="xp__prev-label">Antes</span>
-        <div>
-          <h3>Optcore</h3>
-          <p class="xp__prev-role">Estagiário de Desenvolvimento de Software · 2023 — 2024</p>
-        </div>
-        <p>APIs REST, rotinas de limpeza e validação de dados de fontes heterogêneas e deduplicação de registros com distância de Levenshtein.</p>
       </div>
     </section>
 
