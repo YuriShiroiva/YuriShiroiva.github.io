@@ -871,17 +871,14 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   padding: 8px;
 }
 .dock__avatar {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 46px;
   height: 46px;
+  overflow: hidden;
   border-radius: 10px;
   background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -.02em;
 }
+.dock__avatar img { width: 100%; height: 100%; object-fit: cover; }
 .dock__info { min-width: 0; }
 .dock__info strong {
   display: block;
