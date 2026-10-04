@@ -161,7 +161,7 @@ button:hover .roll > span { transform: translateY(-100%); }
 }
 .topbar__cta:hover { background: var(--accent); color: var(--accent-ink); }
 
-/* ---------- Hero (inspirado em Moncy Yohannan) ---------- */
+/* ---------- Hero ---------- */
 .sr-only {
   position: absolute;
   width: 1px;

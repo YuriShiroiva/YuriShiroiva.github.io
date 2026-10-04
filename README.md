@@ -38,13 +38,9 @@ assets/             → imagens (capas e figuras dos projetos)
 - Link do LinkedIn (hero, rodapé e dock).
 - Currículo em PDF (botão no hero).
 
-## Créditos
-
-O hero foi inspirado no portfólio de [Moncy Yohannan](https://github.com/MoncyDev/Portfolio-Website): a implementação é própria e não usa código nem assets 3D do original.
-
 ## Cache do navegador
 
-O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004k`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
+O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004l`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
 
 ## Publicar no GitHub Pages
 
