@@ -464,12 +464,23 @@ button:hover .roll > span { transform: translateY(-100%); }
 }
 .mega > span:last-child { letter-spacing: -.06em; }
 
-.projects {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  padding: 0 var(--pad);
+/* faixa de projetos que roda sozinha (para quando o mouse passa por cima) */
+.projects-marquee {
+  overflow: hidden;
+  padding-bottom: 6px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
+.projects-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: projects-scroll 55s linear infinite;
+}
+.projects-marquee:hover .projects-track,
+.projects-marquee:focus-within .projects-track { animation-play-state: paused; }
+.projects-track .project { flex: none; width: clamp(300px, 36vw, 600px); }
+@keyframes projects-scroll { to { transform: translateX(calc(-50% - 6px)); } }
 .project {
   display: block;
   padding: 8px;
@@ -1173,7 +1184,8 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
 
   .about { grid-template-columns: 1fr; gap: 32px; padding: 14vh var(--pad) 10vh; }
 
-  .projects { grid-template-columns: 1fr; }
+  .projects-track .project { width: 80vw; }
+  .projects-track { animation-duration: 40s; }
   .project__info { gap: 16px; }
 
   .services__inner { padding: 10vh 18px 18px; border-radius: 22px; }
@@ -1218,5 +1230,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .marquee__track, .intro__swap, .avatar__img { animation: none; }
+  .marquee__track, .intro__swap, .avatar__img, .projects-track { animation: none; }
+  .projects-marquee { overflow-x: auto; }
+  .projects-track .project[aria-hidden="true"] { display: none; }
 }
