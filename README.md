@@ -11,7 +11,7 @@ Site estático (HTML + CSS + JS), sem build. Animações com [GSAP](https://gsap
 | Projeto | Página |
 |---|---|
 | Talhões por satélite (TCC, PUCPR) | [`projetos/talhoes.html`](projetos/talhoes.html) |
-| Plataforma de talhões | [`projetos/talhoes.html#plataforma`](projetos/talhoes.html) |
+| Redes neurais: câmbio e CO₂ | [`projetos/redes-neurais.html`](projetos/redes-neurais.html) |
 | FolhaSã — doenças em folhas de tomate | [`projetos/folhasa.html`](projetos/folhasa.html) |
 | Detecção de falhas industriais | [`projetos/falhas.html`](projetos/falhas.html) |
 
@@ -44,7 +44,7 @@ O hero foi inspirado no portfólio de [Moncy Yohannan](https://github.com/MoncyD
 
 ## Cache do navegador
 
-O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004f`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
+O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261004g`). Sempre que mudar esses arquivos, troque o `?v=` nas 4 páginas (`index.html` e `projetos/*.html`) para os visitantes receberem a versão nova.
 
 ## Publicar no GitHub Pages
 
