@@ -174,11 +174,10 @@ button:hover .roll > span { transform: translateY(-100%); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  height: calc(100svh - 16px);
+  height: 100vh;
+  height: 100svh;
   min-height: 620px;
-  margin: 8px;
   padding: 0 4.5vw;
-  border-radius: 28px;
   background: #07070a;
   color: #fff;
   overflow: hidden;
@@ -1206,7 +1205,7 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
     grid-template-columns: 1fr;
     align-content: start;
     height: auto;
-    min-height: calc(100svh - 16px);
+    min-height: 100svh;
     padding: 104px 22px 120px;
   }
   .intro__left { display: contents; }
