@@ -361,7 +361,7 @@ button:hover .roll > span { transform: translateY(-100%); }
 .certs { list-style: none; margin-bottom: 22px; }
 .certs li {
   display: grid;
-  grid-template-columns: 64px 1fr auto;
+  grid-template-columns: 104px 1fr auto;
   gap: 12px;
   align-items: baseline;
   padding: 10px 0;
@@ -370,7 +370,7 @@ button:hover .roll > span { transform: translateY(-100%); }
   font-weight: 500;
 }
 .certs li:last-child { border-bottom: 1px solid var(--dark-line); }
-.certs span { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--accent-2); }
+.certs__org { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--accent-2); }
 .certs em { font-style: normal; font-size: 13px; color: #8a8a8a; }
 .langs { font-size: 15px; line-height: 1.5; color: #c9c9c9; }
 
@@ -1199,6 +1199,8 @@ a.more__row:hover .more__arrow { transform: translate(3px, -3px); color: var(--a
   .intro__name { font-size: 16vw; }
   .intro__role { font-size: 9vw; }
   .timeline li { grid-template-columns: 1fr; gap: 6px; }
+  .certs li { grid-template-columns: 1fr auto; row-gap: 4px; }
+  .certs__name { grid-column: 1 / -1; grid-row: 2; }
   .more__row { grid-template-columns: 1fr; gap: 6px; padding: 20px 4px; }
   .job__head { grid-template-columns: 1fr 48px; gap: 10px 16px; padding: 24px 20px; }
   .job__period, .job__main, .job__summary { grid-column: 1; }
