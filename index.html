@@ -165,14 +165,15 @@
           <div class="job__panel" id="job-iotag" role="region" aria-label="O que fiz na IoTag" inert>
             <div class="job__panel-inner">
               <ul class="job__list">
-              <li><strong>Diagnóstico de máquinas com LLM</strong><span>Fiz do começo ao fim. A telemetria sai do Cassandra, é resumida e vai para o Claude na Vertex AI. A resposta volta num formato estruturado, validado por schema, e aparece direto na tela do produto.</span></li>
-              <li><strong>Agentes para o CAN bus</strong><span>Montei um sistema com vários agentes de LLM, usando servidores MCP, para descobrir o que significam mensagens CAN sem documentação. Os resultados são conferidos com dados conhecidos e testados num conjunto separado para evitar overfitting.</span></li>
-              <li><strong>Pipelines de telemetria</strong><span>Pipelines em Python que pegam a telemetria bruta (CAN/ISOBUS) e geram datasets organizados, mapas de cobertura em GeoJSON e arquivos de tarefa ISOXML no padrão da indústria.</span></li>
-              <li><strong>Histórico auditável</strong><span>Mudei a forma de guardar configurações no Cassandra. Antes os dados eram sobrescritos; agora cada mudança vira uma nova versão com período de validade (modelo bitemporal com TIMEUUID), e dá para saber como cada operação de campo estava configurada.</span></li>
-              <li><strong>Correções em produção</strong><span>Encontrei e corrigi bugs no serviço de ingestão, entre eles um erro de conversão de unidades no atraso de vazão e uma soma errada nos totais de produto aplicado, que bagunçava os relatórios.</span></li>
-              <li><strong>Vários fabricantes</strong><span>Criei um registro de plugins com decorators. Com ele, dá para suportar máquinas John Deere, Massey Ferguson, Fendt, Horsch, Kuhn e Trimble sem mexer no núcleo do pipeline.</span></li>
+              <li><strong>Diagnóstico de máquinas com LLM</strong><span>Projetei do começo ao fim um recurso com o Claude na Vertex AI que resume a telemetria do Cassandra e entrega diagnósticos estruturados, validados por schema, para a equipe de data science. O diagnóstico de falhas caiu de 2 semanas para 5 dias.</span></li>
+              <li><strong>Agentes para o CAN bus</strong><span>Arquitetei um sistema com vários agentes de LLM que roda kernels Python em paralelo por servidores MCP para decifrar mensagens CAN sem documentação. O tempo por modelo de máquina caiu de 1 mês para 2 semanas, e mais de 20 sinais decodificados já estão em produção. Tudo é conferido com dados conhecidos e testado num conjunto separado.</span></li>
+              <li><strong>Mais de 10 marcas</strong><span>Criei um registro de plugins para a decodificação J1939/ISOBUS que isola cada marca do núcleo do pipeline. Com ele, a plataforma passou a suportar mais de 10 marcas e modelos de equipamento.</span></li>
+              <li><strong>Dados de um fornecedor</strong><span>Liberei os dados geoespaciais de mais de 200 talhões que estavam presos ao formato proprietário de um fornecedor, integrando esse formato ao pipeline de dados, sem depender da API do parceiro.</span></li>
+              <li><strong>ISOXML automático</strong><span>Antes, um arquivo ISOXML era montado à mão para cada operação de cada máquina. Troquei isso por um modelo único gerado por um pipeline em Python, junto com mapas de cobertura em GeoJSON feitos a partir da telemetria bruta do CAN bus.</span></li>
+              <li><strong>Histórico auditável</strong><span>Modelei no Cassandra um esquema bitemporal que só acrescenta dados (append-only). Dá para reconstruir a configuração de qualquer operação de campo em qualquer ponto do histórico.</span></li>
+              <li><strong>Correções em produção</strong><span>Corrigi os totais de produto aplicado que iam para os clientes depois de achar dois defeitos no serviço de ingestão: a conversão de unidade na compensação do atraso de vazão e o escopo de uma agregação.</span></li>
               </ul>
-              <ul class="job__tags"><li>LLM</li><li>Vertex AI</li><li>MCP</li><li>Python</li><li>Cassandra</li><li>PostgreSQL</li><li>CAN · ISOBUS</li><li>GCP</li><li>AWS</li></ul>
+              <ul class="job__tags"><li>LLM</li><li>Claude · Vertex AI</li><li>MCP</li><li>Python</li><li>Cassandra</li><li>PostgreSQL</li><li>CAN · ISOBUS · J1939</li><li>GCP</li></ul>
             </div>
           </div>
         </article>
@@ -183,18 +184,17 @@
               <span class="job__company">Optcore</span>
               <span class="job__role">Estagiário de Desenvolvimento de Software</span>
             </span>
-            <span class="job__summary">Back-end, APIs REST e qualidade de dados numa aplicação web.</span>
+            <span class="job__summary">Dashboards em Streamlit e Appsmith e tratamento de dados para clientes.</span>
             <span class="job__toggle" aria-hidden="true"></span>
             <span class="sr-only">Ver tudo o que fiz na Optcore</span>
           </button>
           <div class="job__panel" id="job-optcore" role="region" aria-label="O que fiz na Optcore" inert>
             <div class="job__panel-inner">
               <ul class="job__list">
-              <li><strong>Back-end e APIs</strong><span>Desenvolvi e mantive serviços de back-end e APIs REST usados nas principais funções da aplicação.</span></li>
-              <li><strong>Qualidade de dados</strong><span>Escrevi rotinas para limpar, transformar e validar dados que chegavam de fontes bem diferentes.</span></li>
-              <li><strong>Deduplicação</strong><span>Usei distância de Levenshtein e comparação aproximada de textos para achar registros duplicados na base.</span></li>
+              <li><strong>Dashboards para a diretoria</strong><span>Evoluí os dashboards em Streamlit e Appsmith que a diretoria de uma empresa cliente usava para acompanhar os resultados da sua carteira de cerca de 30 clientes.</span></li>
+              <li><strong>Tratamento de dados</strong><span>Desenvolvi em Python a limpeza, a padronização e a deduplicação de dados de shoppings vindos de fontes diferentes, para um protótipo de análise de varejo.</span></li>
               </ul>
-              <ul class="job__tags"><li>APIs REST</li><li>Python</li><li>Qualidade de dados</li><li>Levenshtein</li></ul>
+              <ul class="job__tags"><li>Python</li><li>Streamlit</li><li>Appsmith</li><li>Qualidade de dados</li><li>Deduplicação</li></ul>
             </div>
           </div>
         </article>

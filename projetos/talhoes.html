@@ -206,7 +206,7 @@
 
     <!-- Plataforma -->
     <section class="case-section" id="plataforma">
-      <p class="label">Na plataforma</p>
+      <h2 class="label">Na plataforma</h2>
       <div class="case-body">
         <p class="case-big" data-reveal="lines">Depois virou produto: você desenha uma área no mapa e recebe os talhões.</p>
         <p>O frontend, em React com Leaflet, recebe a área desenhada. O backend, em FastAPI, baixa as imagens Sentinel-2 L2A via STAC (sem precisar de login), roda o modelo de 3 classes com janela deslizante e TTA e devolve um polígono por talhão, com a área em hectares. Buscar as 6 datas e rodar o modelo leva de 30 a 60 segundos.</p>
@@ -216,6 +216,7 @@
           <li>Docker para CPU e GPU, com docker-compose</li>
           <li>Testes com pytest e CI no GitHub Actions</li>
         </ul>
+        <p>Também apliquei a solução na IoTag, como projeto de extensão. Cinco profissionais de engenharia, ciência de dados e DevOps avaliaram a ferramenta com nota média de 4,6 de 5 em utilidade e precisão.</p>
       </div>
     </section>
 
@@ -240,7 +241,7 @@
         </article>
         <article class="decision" data-reveal="fade">
           <h3>Avaliação sem vazamento</h3>
-          <p>Usei a divisão oficial do FTW. Calibrei só na validação e calculei as métricas finais em 188 tiles de teste que o modelo nunca viu.</p>
+          <p>Usei a divisão oficial do FTW. Calibrei só na validação e calculei as métricas finais em 188 tiles de teste que o modelo nunca viu, com intervalos de confiança de 95% e tamanho de efeito (Cohen's d).</p>
         </article>
         <article class="decision" data-reveal="fade">
           <h3>Hardware modesto</h3>
