@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neural networks: exchange rate and CO₂ | Yuri Shiroiva</title>
+  <meta name="description" content="An LSTM in PyTorch to forecast the US dollar exchange rate (R² of 0.92 on the test set) and a competitive network to cluster vehicles by engine size, efficiency and CO₂ emissions.">
+  <meta name="theme-color" content="#f2f2f0">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Neural networks: exchange rate and CO₂">
+  <meta property="og:description" content="An LSTM in PyTorch to forecast the US dollar exchange rate (R² of 0.92 on the test set) and a competitive network to cluster vehicles by engine size, efficiency and CO₂ emissions.">
+  <link rel="canonical" href="https://yurishiroiva.github.io/en/projects/neural-networks.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://yurishiroiva.github.io/projetos/redes-neurais.html">
+  <link rel="alternate" hreflang="en" href="https://yurishiroiva.github.io/en/projects/neural-networks.html">
+  <link rel="alternate" hreflang="x-default" href="https://yurishiroiva.github.io/projetos/redes-neurais.html">
+  <meta property="og:url" content="https://yurishiroiva.github.io/en/projects/neural-networks.html">
+  <meta property="og:site_name" content="Yuri Shiroiva">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://yurishiroiva.github.io/assets/og/redes-neurais-en.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../assets/favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png?v=2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css?v=20261010a">
+</head>
+<body class="case">
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <header class="topbar">
+    <div class="topbar__item">
+      <p>Curitiba, Brazil</p>
+      <p class="topbar__muted">Data Science · AI · Python</p>
+    </div>
+    <div class="topbar__item hide-sm">
+      <p>Education</p>
+      <p class="topbar__muted">Applied AI · PUCPR</p>
+    </div>
+    <!-- lang --><nav class="lang topbar__item" aria-label="Language"><a href="../../projetos/redes-neurais.html" hreflang="pt-BR" lang="pt-BR">PT</a><span aria-hidden="true">/</span><span aria-current="true">EN</span></nav><!-- /lang -->
+  </header>
+  <a class="topbar__cta magnetic" href="../index.html#contact"><span class="roll"><span data-text="Let's talk">Let's talk</span></span></a>
+
+  <main>
+    <section class="case-hero" id="top">
+      <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> All projects</a>
+      <p class="label">Data Science · Neural Networks · PUCPR · 2026</p>
+      <h1 class="case-title" data-reveal="lines">Neural networks to forecast the dollar and cluster cars</h1>
+      <p class="case-lead" data-reveal="lines">Two PyTorch networks for a Neural Networks assignment at PUCPR: an LSTM that forecasts the US dollar exchange rate and a competitive network that clusters vehicles by the relationship between engine size, efficiency and CO₂ emissions.</p>
+
+      <dl class="case-meta" data-reveal="fade">
+        <div><dt>Role</dt><dd>Author (tuning, training and evaluation of the models)</dd></div>
+        <div><dt>Context</dt><dd>Neural Networks course at PUCPR, built on the course's starter code</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Stack</dt><dd>Python · PyTorch · scikit-learn · pandas · Matplotlib</dd></div>
+      </dl>
+    </section>
+
+    <figure class="case-cover" data-reveal="fade">
+      <img src="../../assets/projects/redes-neurais/cover-en.webp" alt="Chart of the LSTM dollar forecast and a scatter plot of vehicles clustered by engine size and CO₂" data-parallax>
+    </figure>
+
+    <section class="stats" aria-label="Key results">
+      <div class="stat" data-reveal="fade">
+        <span class="stat__value">0.92</span>
+        <span class="stat__label">LSTM R² on the test set, on data it never saw in training</span>
+      </div>
+      <div class="stat stat--dark" data-reveal="fade">
+        <span class="stat__value">10</span>
+        <span class="stat__label">previous values the LSTM uses to predict the next one</span>
+      </div>
+      <div class="stat stat--accent" data-reveal="fade">
+        <span class="stat__value">0.98</span>
+        <span class="stat__label">R² of the curve between efficiency and CO₂ emissions</span>
+      </div>
+      <div class="stat" data-reveal="fade">
+        <span class="stat__value">5</span>
+        <span class="stat__label">neurons in the competitive network, one per vehicle group</span>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2 class="label">Forecasting the dollar</h2>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">The LSTM closely followed the dollar's ups and downs on the test set.</p>
+        <p>It looks at the last 10 values in the series to predict the next one. I used an LSTM layer with 64 units and a dense layer with 16, and trained for 150 epochs with Adam. The normalization (MinMaxScaler) was fit only on the training data, so no information leaked from the test set.</p>
+        <div class="meters" role="group" aria-label="LSTM R² on training and test">
+          <p class="meters__title">LSTM R², from 0 to 1</p>
+          <div class="meter" title="Training: 0.983">
+            <div class="meter__head"><span>Training</span><span class="meter__value">0.983</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.983"></div></div>
+          </div>
+          <div class="meter" title="Test: 0.919">
+            <div class="meter__head"><span>Test</span><span class="meter__value">0.919</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.919"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../../assets/projects/redes-neurais/rnt_teste-en.webp" alt="LSTM prediction line overlaid on the actual dollar values in the test set" width="1334" height="731" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 1</b> LSTM predictions (orange) over the actual dollar values (blue) on the test set.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2 class="label">Clustering cars</h2>
+      <div class="case-body">
+        <p class="case-big" data-reveal="lines">The competitive network split the cars into similar groups without anyone telling it what the groups were.</p>
+        <p>Each of the 5 neurons becomes the representative of a vehicle group. Then I fit a polynomial curve to each relationship to see the trend and make predictions, such as the estimated emissions of a car with an 8.2-liter engine (about 498 g/km).</p>
+        <div class="meters" role="group" aria-label="R² of the trend curves by relationship">
+          <p class="meters__title">Trend curve R², from 0 to 1</p>
+          <div class="meter" title="Engine size × efficiency: 0.63">
+            <div class="meter__head"><span>Engine size × efficiency</span><span class="meter__value">0.63</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.635"></div></div>
+          </div>
+          <div class="meter" title="Engine size × CO₂: 0.65">
+            <div class="meter__head"><span>Engine size × CO₂</span><span class="meter__value">0.65</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.646"></div></div>
+          </div>
+          <div class="meter" title="Efficiency × CO₂: 0.98">
+            <div class="meter__head"><span>Efficiency × CO₂</span><span class="meter__value">0.98</span></div>
+            <div class="meter__track"><div class="meter__fill" style="--v:.983"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <figure class="case-figure case-figure--narrow" data-reveal="fade">
+      <div class="case-figure__frame">
+        <img src="../../assets/projects/redes-neurais/rnc_cilindrada_x_co2-en.webp" alt="Scatter plot of vehicles by engine size and CO₂ emissions, colored by group, with a trend curve" width="1184" height="806" loading="lazy">
+      </div>
+      <figcaption><b>Fig. 2</b> Vehicles colored by the group the competitive network found, with the trend curve between engine size and CO₂.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2 class="label">What the numbers show</h2>
+      <div class="case-body">
+        <p>Engine size alone explains only part of the variation (R² around 0.64), while efficiency and emissions move almost together (R² of 0.98). To improve it, I would add more variables, such as fuel type and vehicle weight. For the LSTM, R² dropped from 0.98 in training to 0.92 on test: it generalizes well but still misses the sharpest spikes.</p>
+      </div>
+    </section>
+
+    <a class="next-project" href="folhasa.html" data-cursor="Next">
+      <span class="label">Next project</span>
+      <span class="next-project__title">FolhaSã <span class="next-project__arrow" aria-hidden="true">→</span></span>
+    </a>
+  </main>
+
+  <footer class="footbar">
+    <span>© <span data-year>2026</span> Yuri Shiroiva</span>
+    <span class="hide-sm">Curitiba, Brazil · <span data-clock>--:--:--</span></span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <!-- ===== Dock flutuante ===== -->
+  <nav class="dock" aria-label="Main navigation">
+    <div class="dock__panel" id="dock-menu" data-lenis-prevent inert>
+      <div class="dock__panel-inner">
+        <ul class="dock__links">
+          <li><a href="../index.html#home"><span>01</span> Home</a></li>
+          <li><a href="../index.html#about"><span>02</span> About</a></li>
+          <li><a href="../index.html#experience"><span>03</span> Experience</a></li>
+          <li><a href="../index.html#projects"><span>04</span> Projects</a></li>
+          <li><a href="../index.html#services"><span>05</span> What I do</a></li>
+          <li><a href="../index.html#stack"><span>06</span> Stack</a></li>
+          <li><a href="../index.html#contact"><span>07</span> Contact</a></li>
+        </ul>
+        <div class="dock__foot">
+          <span class="status"><i></i>Open to opportunities</span>
+          <!-- lang --><nav class="lang" aria-label="Language"><a href="../../projetos/redes-neurais.html" hreflang="pt-BR" lang="pt-BR">PT</a><span aria-hidden="true">/</span><span aria-current="true">EN</span></nav><!-- /lang -->
+          <span class="dock__socials">
+            <a href="https://github.com/YuriShiroiva" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+            <a href="https://www.linkedin.com/in/yurishiroiva" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.6h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13v5.33h-4v-4.73c0-1.13-.02-2.58-1.57-2.58-1.58 0-1.82 1.23-1.82 2.5v4.81h-4v-11Z"/></svg></a>
+            <a href="mailto:yurishiroivabr@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dock__bar">
+      <span class="dock__avatar" aria-hidden="true"><img src="../../assets/me/avatar-sm.webp?v=2" alt="" width="46" height="46"></span>
+      <div class="dock__info">
+        <strong>Yuri Shiroiva</strong>
+        <div class="marquee"><div class="marquee__track">
+          <span>Data scientist, AI engineer, LLMs and agents, Machine Learning, Deep Learning, Time series, CAN bus and ISOBUS,</span>
+          <span aria-hidden="true">Data scientist, AI engineer, LLMs and agents, Machine Learning, Deep Learning, Time series, CAN bus and ISOBUS,</span>
+        </div></div>
+      </div>
+      <button class="dock__toggle" type="button" aria-expanded="false" aria-controls="dock-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" integrity="sha384-FKTX0CNJ8ngN1oGMBReVu7mvjTJyjFiD5etb1NKnYxc+8eFI2O0KWnksTN+oTFcu" crossorigin="anonymous"></script>
+  <script src="../../js/main.js?v=20261010a"></script>
+</body>
+</html>

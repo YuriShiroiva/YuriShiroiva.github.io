@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yurishiroiva.github.io/</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yurishiroiva.github.io/projetos/talhoes.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yurishiroiva.github.io/projetos/redes-neurais.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yurishiroiva.github.io/projetos/folhasa.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yurishiroiva.github.io/projetos/falhas.html</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/projetos/talhoes.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/projetos/redes-neurais.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/projetos/folhasa.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/projetos/falhas.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/en/</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/en/projects/field-boundaries.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/en/projects/neural-networks.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/en/projects/folhasa.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://yurishiroiva.github.io/en/projects/defect-detection.html</loc><lastmod>2026-10-10</lastmod></url>
 </urlset>

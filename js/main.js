@@ -9,6 +9,8 @@
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  const isEn = document.documentElement.lang.startsWith('en');
+  const t = (pt, en) => (isEn ? en : pt);
 
   // voltando pelo "Voltar" do navegador: sem loader e na mesma altura de antes
   const returning = performance.getEntriesByType?.('navigation')[0]?.type === 'back_forward';
@@ -133,7 +135,7 @@
     if (!open && dockPanel.contains(document.activeElement)) dockToggle.focus();
     dock.classList.toggle('is-open', open);
     dockToggle.setAttribute('aria-expanded', String(open));
-    dockToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    dockToggle.setAttribute('aria-label', open ? t('Fechar menu', 'Close menu') : t('Abrir menu', 'Open menu'));
     dockPanel.inert = !open;
   }
   dockToggle.addEventListener('click', (e) => {
@@ -182,7 +184,7 @@
   /* ---------- Relógio e ano ---------- */
   const clock = $('[data-clock]');
   if (clock) {
-    const fmt = new Intl.DateTimeFormat('pt-BR', {
+    const fmt = new Intl.DateTimeFormat(t('pt-BR', 'en-GB'), {
       timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit', second: '2-digit',
     });
     const tick = () => { clock.textContent = fmt.format(new Date()); };

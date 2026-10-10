@@ -28,6 +28,8 @@ Depois abra http://localhost:4321.
 ```
 index.html            página inicial (textos, links, cards de projeto)
 projetos/*.html       uma página por projeto
+en/                   versão em inglês, GERADA por tools/build_en.py (não editar à mão)
+tools/                gerador da versão em inglês e as traduções
 404.html              página de erro (usa caminhos absolutos, começando com /)
 css/style.css         visual (cores e fontes nas variáveis do topo, em :root)
 js/main.js            loader, scroll, animações, cursor, menu
@@ -39,13 +41,25 @@ assets/cv/            currículo em PDF (português e inglês)
 robots.txt, sitemap.xml
 ```
 
+## Versão em inglês
+
+As páginas em inglês ficam em `en/` (https://yurishiroiva.github.io/en/) e são geradas a partir das páginas em português. Depois de mudar qualquer página em português, rode:
+
+```bash
+python tools/build_en.py
+```
+
+- As traduções ficam em `tools/en_strings.py`. Se a página ganhar um texto novo sem tradução, o script lista o trecho e não grava nada até a tradução ser acrescentada.
+- Imagens com texto têm uma versão em inglês ao lado da original, com `-en` no nome (`cover-en.webp`, `rnt_teste-en.webp`). Quando ela existe, o gerador usa sozinho.
+- O seletor PT / EN fica entre `<!-- lang -->` e `<!-- /lang -->` nas páginas em português; o gerador troca pelo seletor da versão em inglês.
+
 ## Capas dos projetos
 
 As capas têm 1600x1280. O card da home e a capa da página do projeto cortam partes diferentes da imagem, e o parallax mexe nela. Por isso o conteúdo importante tem que ficar dentro da faixa **x de 150 a 1450 e y de 270 a 1010**.
 
 ## Cache do navegador
 
-O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261005a`). Sempre que mudar esses arquivos, troque o `?v=` nas 6 páginas (`index.html`, `404.html` e `projetos/*.html`) para os visitantes receberem a versão nova. Com imagem que muda mantendo o nome, vale o mesmo: as capas usam `?v=2`.
+O CSS e o JS são carregados com um número de versão (`css/style.css?v=20261010a`). Sempre que mudar esses arquivos, troque o `?v=` nas 6 páginas (`index.html`, `404.html` e `projetos/*.html`) para os visitantes receberem a versão nova. Com imagem que muda mantendo o nome, vale o mesmo: as capas usam `?v=2`.
 
 ## Publicar no GitHub Pages
 
